@@ -1,0 +1,15 @@
+INSERT INTO category (name) VALUES ('Mystery');
+INSERT INTO category (name) VALUES ('Novel');
+INSERT INTO category (name) VALUES ('History');
+INSERT INTO category (name) VALUES ('Drama');
+INSERT INTO category (name) VALUES ('Adventure');
+INSERT INTO language (name) VALUES ('Serbian');
+INSERT INTO language (name) VALUES ('English');
+INSERT INTO language (name) VALUES ('German');
+INSERT INTO language (name) VALUES ('Russian');
+INSERT INTO language (name) VALUES ('Spanian');
+INSERT INTO user (first_name, last_name, username, password, type, category_id) VALUES ('Andrej', 'Andrejevic', 'admin1', 'pass', 'a', NULL);
+INSERT INTO user (first_name, last_name, username, password, type, category_id) VALUES ('Aleksa', 'Aleksejevic', 'admin2', 'pass', 'a', NULL);
+INSERT INTO user (first_name, last_name, username, password, type, category_id) VALUES ('Dusanka', 'Jovanovic', 'subs1', 'pass', 's', 2);
+INSERT INTO user (first_name, last_name, username, password, type, category_id) VALUES ('Jovan', 'Milojevic', 'subs2', 'pass', 's', NULL);
+INSERT INTO user (first_name, last_name, username, password, type, category_id) VALUES ('Miloje', 'Dusankovic', 'subs3', 'pass', 's', 4);
