@@ -1,24 +1,37 @@
 /*-------------------------------------------------
 GLOBALS CLASSES
 -------------------------------------------------*/
-body {
-	width:75em;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:0em;
-	margin-bottom:0em;
-	font-family: 'Georgia', serif;
-	background:#FFF;
-	color:#666;
+html {
+	position: relative;
+	min-height: 100%;
 }
+
+body {
+	margin-top: 3em;
+	padding-bottom: 6em;
+	font-family: 'Segoe UI', sans-serif  !important;
+	background:#FFF;
+	color:#666;	
+}
+
+.fill-width {
+	background: #28C8A0;
+}
+
+ul .selected a { /* every selected li */
+	color: #555 !important; 
+	background: #FFF !important;
+}
+/*
+a {
+	text-decoration: none; 
+	color: #28C8A0;
+}
+
 p {
 	font-size:14px; 
 	font-weight:normal; 
 	line-height:20px;
-}
-a {
-	text-decoration:none; 
-	color:#069;
 }
 a:hover {
 	text-decoration:none; 
@@ -31,12 +44,6 @@ ul li {
 }
 img { 
 	border:none; 
-}
-h1 {
-	font-size:3em; 
-	color:#FFF; 
-	text-transform:uppercase; 
-	font-weight:normal;
 }
 h2 {
 	font-size:2em; 
@@ -113,10 +120,29 @@ table td {
 /*-------------------------------------------------
 HEADER CLASSES
 -------------------------------------------------*/
+.contentHolder {
+	width: 75em;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:0em;
+	margin-bottom:0em;
+}
+
+.navbar-ribbon {
+	height: 3em !important;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.navbar-title {
+	padding-top: 0.5em;
+}
+
 .header { 
-	background:rgba(2, 124, 148, 0.5);
-	overflow:hidden; 
-	height: 16em;
+	background: rgba(40, 200, 160, 0.45);
+	margin-top: 3.5em;
+	overflow: show; 
+	height: 15em;
 }
 .header-image {
 	float:left; 
@@ -125,7 +151,6 @@ HEADER CLASSES
 	height:14em; 
 	margin-left:1em; 
 	margin-right:1em; 
-	padding-bottom:1em; 
 	padding-top:1em;
 	text-align: center;
 }
@@ -133,44 +158,100 @@ HEADER CLASSES
 	width: auto; 
 	vertical-align: middle; 
 	height: 100%;
-	}
+}
 
 .header-menu {
 	float:left; 
 	width:58em; 
 	height:100%; 
 	padding-top:0.5em;
+    position:relative;
 }
+
+.header-menu h1 {
+	padding-top: 1em;
+	font-size:2.3em; 
+	color:#FFF; 
+	font-style: italic;
+}
+
+.header-menu h1 span {
+	font-size:2em; 
+	font-weight: bold;
+}
+
 .header-menu ul {
-	float:right; 
-	margin-top: 2.7em;
+    position:absolute;
+    bottom:0;
+    right: 0;
 }
+
 .header-menu ul li {
-	float:left; 
-	width:13em; 
+	width: 13em; 
+	text-align: center;
 }
+
 .header-menu ul li a {
-	display:block; 
-	line-height:3em; 
-	margin-left: 1em; 
-	background:#FFF; 
-	font-size:0.9em; 
-	color:#666; 
-	text-align:center; 
-	text-transform:uppercase;
+	color: #FFF; 
+	font-weight: bold;
 }
+
 .header-menu ul li a:hover {
-	background:#59B2E0; 
-	color:#EEE;
+	color: #28C8A0  !important; 
+	background: #FFF;
 }
-.roleHeading {
-	text-transform: uppercase;
+
+.header-menu ul li a:focus {
+	color: #555; 
+	background: #FFF !important;
 }
-.header-menu h6 a {
-	color:#777;
+
+.header-menu ul li a:active {
+	color: #555; 
+	background: #FFF !important;
 }
-.header-menu h6 a:hover {
-	color:#59B2E0;
+
+.dropdown-menu {
+	background: #FFF !important;
+    box-shadow: 0px 3px 3px #AAA !important;
+}
+
+.dropdown-menu li {
+	background: #FFF;
+    box-shadow: 0px 3px 3px #AAA !important;
+	height: 2.5em !important;
+	position: relative;
+	padding-bottom: 3px;
+}
+
+.dropdown-menu li a {
+	line-height: 2em !important;
+	padding-bottom: 0.5em;
+	margin: 0 auto;
+	width: 100%;
+	color: #AAA !important; 
+}
+
+.dropdown-menu li a:hover {
+	color: #28C8A0 !important; 
+    background: transparent !important;
+}
+/*-------------------------------------------------
+FOOTER CLASSES
+-------------------------------------------------*/
+.footer {
+ 	width: 100%;
+  	position: absolute;
+  	bottom: 0;
+	padding-top: 0.5em; 
+	padding-bottom: 0em; 
+	background: rgba(40, 200, 160, 1);
+}
+
+.footer p {
+	text-align: center; 
+	font-weight: bold;
+	color: #FFF;
 }
 /*-------------------------------------------------
 FLOAT PANEL HOLDERS
@@ -179,12 +260,46 @@ FLOAT PANEL HOLDERS
 	margin:0 auto; 
 	overflow:hidden;
 }
+
 .panel {
 	width:16em; 
 	float:left; 
 	overflow:hidden; 
-	background:#EEE;
+	background: rgba(40, 200, 160, 0.3) !important;
 }
+
+.panel-heders {
+	font-size: 1.1em;
+	font-weight: bold;
+	list-style-type: none;
+}
+
+.panel-heders li a {
+	color: #555 !important; 
+}
+
+.panel-heders .enabled-header a:hover {
+	color: #28C8A0 !important; 
+	background: #FFF !important;
+}
+
+.panel-heders .enabled-header a:focus {
+	background: #FFF !important;
+}
+
+.panel-categories li a {
+	padding-left: 2.5em !important; 
+}
+
+.panel-categories li a:hover {
+	color: #28C8A0 !important; 
+	background: #FFF !important;
+}
+
+.panel-categories li a:focus {
+	background: #FFF !important;
+}
+/*
 .content {
 	width:55em; 
 	float:left; 
@@ -194,40 +309,10 @@ FLOAT PANEL HOLDERS
     background-repeat: no-repeat;
     background-position: center;
 }	
-.panel ul {
-	padding:0em;
-}
-.panel ul li {
-	color:#069; 
-	font-size:1.3em; 
-	padding:1em;
-}
-.center {
-	margin: auto; 
-	width: 30em; 
-	padding: 1em;
-}
-.showHideFormLabel {
-	font-size: 0.7em;
-	text-align: right; 
-}
-/*-------------------------------------------------
-FOOTER CLASSES
--------------------------------------------------*/
-.footer {
-	margin:0 auto; 
-	padding-top:0.5em; 
-	padding-bottom:0em; 
-	overflow:hidden; 
-	background:rgba(2, 124, 148, 0.5);
-}
-.footer p {
-	text-align:center; 
-	color:#EEE;
-}
 /*-------------------------------------------------
 PAGES
 -------------------------------------------------*/
+/*
 .tabelaPregled .status {
 	width:3em;
 }
@@ -277,6 +362,7 @@ PAGES
 /*-------------------------------------------------
 FORMS
 -------------------------------------------------*/
+/*
 .veryBigInput {
 	width: 20em;
 	height:10em;
