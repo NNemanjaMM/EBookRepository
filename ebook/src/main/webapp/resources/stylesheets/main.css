@@ -82,38 +82,6 @@ h6 {
 	margin: 0em; 
 	padding-top:0.5em;
 }
-table {
-	border:1px solid #CCC; 
-	width:55em; 
-	table-layout: fixed; 
-	margin-top:2em;
-}
-table th {
-	padding-bottom:1em;
-	text-align:center; 
-	font-size:1.2em;
-	}
-table td {
-	text-align:center;
-	padding-bottom:1.5em;
-}
-.invisibleTable {
-	border:0px solid #CCC;
-	width:35em; 
-	table-layout: fixed; 
-	margin-top:2em;
-}
-.invisibleTable th {
-	padding-bottom:1em;
-	text-align:left; 
-	font-size:1em; 
-	width:13em;
-}
-.invisibleTable td {
-	padding-bottom:1em;
-	text-align:left; 
-	font-size:1em;
-}
 .error {
 	color:red; 
 }
@@ -299,65 +267,100 @@ FLOAT PANEL HOLDERS
 .panel-categories li a:focus {
 	background: #FFF !important;
 }
-/*
+
 .content {
-	width:55em; 
+	width:59em; 
 	float:left; 
 	overflow:hidden; 
 	padding:2em;
+	text-align: center
+	/*
     background-image: url('/public/images/logoBackground.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center;*/
 }	
+
+.center-content {
+	display: inline-block;
+}
 /*-------------------------------------------------
-PAGES
+TABLES
 -------------------------------------------------*/
-/*
-.tabelaPregled .status {
-	width:3em;
-}
-.tabelaPregled .tip {
-	width:3em;
-}
-.tabelaPregled .naziv {
-	width:15em;
-}
-.tabelaPregled .pregled {
-	width:2em;
-}
-.tabelaPregled .pdf {
-	width:2em;
-}
-.tabelaPregled .withdrawal {
-	width:2.5em;
-}
-.votingCard {
-	float: left;
-	margin: 1em;
-	border:1px solid #CCC;
-	padding: 1em;
-	width:23em; 
+.tableBooks {
+	width:48em; 
 	table-layout: fixed; 
+	margin-top:2em;
+	text-align: left;
 }
-.votingCard .heading {
-	text-align:center; 
-	font-size:1em; 
-	font-weight: bold;
+
+.tableBooks th {
+	padding-bottom: 0.2em;
+	font-size: 1.1em;
 }
-.votingCard .headingMain {
-	text-align:center; 
-	font-size:1.2em; 
-	font-weight: bold;
+
+.tableBooks td {
+	padding-bottom: 0.2em;
 }
-.votingCard .value {
-	text-align:center; 
-	font-size:1em; 
-	padding-bottom: 0.8em;
+
+.tableBooks .info {
+	width: 35em;
 }
-.votingCard .text {
-	text-align:center; 
-	font-size:1em; 
-	padding-bottom: 0.8em;
+
+.tableBooks .add {
+	width: 5em;
+	text-align: center;
+	color: #28C8A0;
+	font-style: italic;
+}
+
+.tableBooks .add button {
+	width: 7em;
+	margin-bottom: 0.5em;
+	font-style: normal !important;
+}
+
+.tableUsers {
+	margin-top:2em;
+	text-align: left;
+	width: 45em !important;
+}
+
+.tableUsers .info {
+	width: 18em;
+	padding-top: 0em; 
+	padding-left: 0.3em;
+	margin-right: 1em;
+	font-size: 1.1em;
+}
+
+.tableUsers .add {
+	width: 12em;
+}
+
+.tableUsers .account {
+	width: 5em ;
+}
+
+.tableUsers .add button {
+	width: 6em;
+	margin-top: 0.7em; 
+	margin-right: 0.7em;
+}
+
+.tableCategories {
+	margin-top: 2em;
+	text-align: left;
+	width: 25em !important;
+}
+
+.tableCategories .info {
+	width: 12em;
+	padding-left: 0.3em;
+}
+
+.tableCategories .add button {
+	width: 6em;
+	margin-right: 0.7em;
 }
 /*-------------------------------------------------
 FORMS
@@ -406,3 +409,4 @@ FORMS
 	height: 2em !important;
 	width: 14.65em !important;
 }
+*/

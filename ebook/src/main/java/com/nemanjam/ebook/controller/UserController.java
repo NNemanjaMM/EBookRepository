@@ -19,7 +19,7 @@ public class UserController {
 
 	@RequestMapping(value="/authentication", method=RequestMethod.GET)
 	public String OpenLoginPage() {
-        return "viewLogin";
+        return "viewBooksList";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
