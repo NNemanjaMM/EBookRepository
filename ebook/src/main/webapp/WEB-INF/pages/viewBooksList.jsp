@@ -17,7 +17,7 @@
 			<div class="content">
     			<div class="center-content">
 					
-					<jsp:include page="addViewCategories.jsp" />
+					<jsp:include page="addFormUserAccount.jsp" />
 					
         		</div>
 			</div>		

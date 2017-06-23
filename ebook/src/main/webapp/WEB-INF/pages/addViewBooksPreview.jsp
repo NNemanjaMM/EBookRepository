@@ -5,7 +5,7 @@
 
 	<tr><th class="info">Duge noci i crne zastave, <i>Dejan Stojiljkovic</i>, 2011</th>
 		<td rowspan="3" class="add">Register to download</td></tr>
-	<tr><td><i>History, Serbia, Kosovo War, Milos Obilic</i></td></tr>
+	<tr><td><i>Category: History; Language: English; Tags: Serbia, Kosovo War, Milos Obilic</i></td></tr>
 	<tr><td>Lorem ipsum dolor sit amet, consectetur adipiscing 
 	elit. Aenean tortor elit, finibus sit amet elit maximus, 
 	finibus rhoncus elit. Aenean maximus velit in varius pretium. 

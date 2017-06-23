@@ -4,8 +4,10 @@
 <table class="tableBooks">
 
 	<tr><th class="info">Duge noci i crne zastave, <i>Dejan Stojiljkovic</i>, 2011</th>
-		<td rowspan="3" class="add"><button class="btn btn-default">Download</button></td></tr>
-	<tr><td><i>History, Serbia, Kosovo War, Milos Obilic</i></td></tr>
+		<td rowspan="3" class="add" style="display: none;"><button class="btn btn-default">Download</button></td>
+		<td rowspan="3" class="add">Category not available for you</td></tr>
+	</tr>
+	<tr><td><i>Category: History; Language: English; Tags: Serbia, Kosovo War, Milos Obilic</i></td></tr>
 	<tr><td>Lorem ipsum dolor sit amet, consectetur adipiscing 
 	elit. Aenean tortor elit, finibus sit amet elit maximus, 
 	finibus rhoncus elit. Aenean maximus velit in varius pretium. 

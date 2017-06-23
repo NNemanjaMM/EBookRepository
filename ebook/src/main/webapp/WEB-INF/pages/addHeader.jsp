@@ -27,7 +27,7 @@
 
     	<div class="header">
 			<div class="header-image">
-				<img src="images/grbb.png"/>
+				<img src="resources/images/el_icon.png"/>
 			</div>
 			<div class="header-menu">
 				<h1> &nbsp;&nbsp;&nbsp;&nbsp; <span>e-Library</span> &nbsp;&nbsp; Online E-Books Repository</h1>

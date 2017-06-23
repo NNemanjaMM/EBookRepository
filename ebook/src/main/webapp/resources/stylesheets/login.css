@@ -60,6 +60,7 @@ body {
     -moz-transition: all 0.1s linear;
     transition: all 0.1s linear;
 }
+
 .panel-login input:hover,
 .panel-login input:focus {
     outline:none;
@@ -80,16 +81,19 @@ body {
     text-transform: uppercase;
     border-color: #529de6;
 }
+
 .btn-login:hover,
 .btn-login:focus {
     color: #fff;
     background-color: #53A3CD;
     border-color: #53A3CD;
 }
+
 .forgot-password {
     text-decoration: underline;
     color: #888;
 }
+
 .forgot-password:hover,
 .forgot-password:focus {
     text-decoration: underline;
@@ -107,9 +111,21 @@ body {
     text-transform: uppercase;
     border-color: #1CB94A;
 }
+
 .btn-register:hover,
 .btn-register:focus {
     color: #fff;
     background-color: #1CA347;
     border-color: #1CA347;
+}
+
+.form-control:focus {   
+	border-color: rgba(40, 200, 160, 0.8) !important;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(40, 200, 160, 0.6) !important;
+	outline: 0 none !important;
+}
+
+.btn:active,
+.btn:focus {
+	outline-color: rgba(40, 200, 160, 0.8) !important;
 }
