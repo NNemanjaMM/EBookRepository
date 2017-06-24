@@ -4,7 +4,7 @@
 <!DOCTYPE>
 <html>
 <head>
-	<jsp:include page="addHeadLogin.jsp" />
+	<jsp:include page="components/addHeadLogin.jsp" />
 </head>
 	 <body>
 		<div class="jumbotron">

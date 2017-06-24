@@ -4,25 +4,25 @@
 <!DOCTYPE>
 <html>
 <head>
-	<jsp:include page="addHeadMain.jsp" />
+	<jsp:include page="components/addHeadMain.jsp" />
 </head>
 	<body>
 	 
-		<jsp:include page="addHeader.jsp" />
+		<jsp:include page="components/addHeader.jsp" />
 	 	
 		
 		<div class="middle contentHolder">
-			<jsp:include page="addSideNavigation.jsp" />
+			<jsp:include page="components/addSideNavigation.jsp" />
 		
 			<div class="content">
     			<div class="center-content">
 					
-					<jsp:include page="addFormUserAccount.jsp" />
+					<jsp:include page="components/addFormCategoryAdd.jsp" />
 					
         		</div>
 			</div>		
 		</div>
 	 	
-		<jsp:include page="addFooter.jsp" />
+		<jsp:include page="components/addFooter.jsp" />
 	</body>
 </html>

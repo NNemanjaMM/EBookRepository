@@ -8,7 +8,7 @@
 <title>Hello world Example</title>
 </head>
 	 <body>
-	 	<jsp:include page="addHeadLogin.jsp" />
+	 	<jsp:include page="components/addHeadLogin.jsp" />
 	     <h1>Hello ${name.size() == 0}, How are youš?</h1>
 	     <br/>
 	     
