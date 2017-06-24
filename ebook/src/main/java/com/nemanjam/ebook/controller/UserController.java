@@ -35,6 +35,16 @@ public class UserController {
 		// vratiti kategoriju koja se menja
 		return "viewUserUpdateRole";
 	}
+
+	@RequestMapping(value="/useradd", method=RequestMethod.GET)
+	public String UserAddDisplay() {
+		if (!hasPermision()) {
+			return "redirect:/";
+		}
+
+
+		return "viewUserAdd";
+	}
 	
 	@RequestMapping(value="/userupdate", method=RequestMethod.POST)
 	public String UserUpdate(@ModelAttribute("user") UserEntity user) {

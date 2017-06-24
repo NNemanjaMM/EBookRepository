@@ -31,6 +31,15 @@ h2 {
 	font-weight: normal; 
 	margin-bottom: 1.5em;
 }
+
+a:hover {
+	text-decoration: none !important;
+}
+
+.error-field-top div {
+	margin-top: 0em !important;
+	margin-bottom: 1em !important;
+}
 /*-------------------------------------------------
 HEADER CLASSES
 -------------------------------------------------*/
@@ -239,6 +248,7 @@ FLOAT PANEL HOLDERS
 	color: #28C8A0 !important; 
 	background: #FFF;
 	font-size: 1.2em;
+    border-radius: 0.4em;
 }
 
 .create-new-block:hover {

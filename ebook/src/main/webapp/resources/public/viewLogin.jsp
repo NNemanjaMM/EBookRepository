@@ -1,6 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+		                            <div>
+		                            	<form id="register-form" method="post" action="/useradd" style="display: none">
+		                                    <div class="form-group">
+		                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required="required">
+		                                    </div>
+		                                    <div class="form-group">
+		                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" required="required">
+		                                    </div>
+		                                    <div class="form-group">
+		                                        <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="" required="required">
+		                                    </div>
+		                                    <div class="form-group">
+		                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="required">
+		                                    </div>
+		                                    <div class="form-group">
+		                                        <input type="password" name="repeatpassword" id="repeatpassword" tabindex="2" class="form-control" placeholder="Repeat Password" required="required">
+		                                    </div>
+		                                    <div class="form-group">
+		                                        <div class="row">
+		                                            <div class="col-sm-6 col-sm-offset-3">
+		                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Create Account">
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                </form>
+		                            </div>
 <!DOCTYPE>
 <html>
 <head>
@@ -24,9 +50,6 @@
 		                        <div class="col-xs-6">
 		                            <a href="#" class="active" id="login-form-link">Log In</a>
 		                        </div>
-		                        <div class="col-xs-6">
-		                            <a href="#" id="register-form-link">Create Account</a>
-		                        </div>
 		                    </div>
 		                    <hr>
 		                </div>
@@ -45,32 +68,6 @@
 		                                        <div class="row">
 		                                            <div class="col-sm-6 col-sm-offset-3">
 		                                                <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In!">
-		                                            </div>
-		                                        </div>
-		                                    </div>
-		                                </form>
-		                            </div>
-		                            <div>
-		                            	<form id="register-form" method="post" action="/useradd" style="display: none">
-		                                    <div class="form-group">
-		                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <input type="password" name="repeatpassword" id="repeatpassword" tabindex="2" class="form-control" placeholder="Repeat Password" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <div class="row">
-		                                            <div class="col-sm-6 col-sm-offset-3">
-		                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Create Account">
 		                                            </div>
 		                                        </div>
 		                                    </div>

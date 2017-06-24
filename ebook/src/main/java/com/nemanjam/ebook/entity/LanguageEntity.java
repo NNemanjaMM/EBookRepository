@@ -17,7 +17,7 @@ public class LanguageEntity {
 	private Integer id;
 	
 	@Column(nullable = false)
-	@Size(max = 30, min = 1)
+	@Size(max = 30, min = 1, message = "Language's name must contain between 1 and 30 characters!")
 	private String name;	
     
 

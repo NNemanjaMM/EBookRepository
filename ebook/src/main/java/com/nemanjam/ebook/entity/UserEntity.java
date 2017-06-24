@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.nemanjam.ebook.validation.IsUsernameUnique;
+
 @Entity
 @Table(name = "user")
 public class UserEntity {
@@ -18,19 +20,20 @@ public class UserEntity {
 	private Integer id;
 
 	@Column(nullable = false)
-	@Size(max = 30, min = 1)
+	@Size(max = 30, min = 1, message = "User's first name must contain between 1 and 30 characters!")
 	private String firstName;
 
 	@Column(nullable = false)
-	@Size(max = 30, min = 1)
+	@Size(max = 30, min = 1, message = "User's last name must contain between 1 and 30 characters!")
 	private String lastName;
 
 	@Column(nullable = false)
-	@Size(max = 10, min = 1)
+	@Size(max = 10, min = 1, message = "User's username must contain between 1 and 10 characters!")
 	private String username;
 
 	@Column(nullable = false)
-	@Size(max = 10, min = 1)
+	@Size(max = 10, min = 1, message = "User's password must contain between 1 and 10 characters!")
+	@IsUsernameUnique
 	private String password;
 
 	@Column(nullable = false)

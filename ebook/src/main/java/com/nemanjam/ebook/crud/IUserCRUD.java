@@ -9,5 +9,7 @@ import com.nemanjam.ebook.entity.UserEntity;
 public interface IUserCRUD extends CrudRepository<UserEntity, Integer> {
 
 	public List<UserEntity> findByUsername(String username);
+
+	public List<UserEntity> findByCategoryId(int id);
 	
 }

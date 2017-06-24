@@ -28,6 +28,14 @@ public class UserService {
 	public List<UserEntity> findUserByUsername(String username) {
 		return userCrud.findByUsername(username);
 	}
+
+	public boolean hasUsersForCategory(int id) {
+		if (userCrud.findByCategoryId(id).size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	public void addUser(UserEntity user) {
 		userCrud.save(user);

@@ -17,7 +17,7 @@ public class CategoryEntity {
 	private Integer id;
 
 	@Column(nullable = false)
-	@Size(max = 30, min = 1)
+	@Size(max = 30, min = 1, message = "Category's name must contain between 1 and 30 characters!")
 	private String name;	
     
 	

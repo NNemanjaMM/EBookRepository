@@ -18,15 +18,15 @@ public class EBookEntity {
 	private Integer id;
 
 	@Column(nullable = false)
-	@Size(max = 80, min = 1)
+	@Size(max = 80, min = 1, message = "Book's title must contain between 1 and 80 characters!")
 	private String title;
 
 	@Column(nullable = true)
-	@Size(max = 120, min = 1)
+	@Size(max = 120, min = 1, message = "If typed, book's author must contain between 1 and 120 characters!")
 	private String author;
 
 	@Column(nullable = true)
-	@Size(max = 120, min = 1)
+	@Size(max = 120, min = 1, message = "If typed, book's keywords must contain between 1 and 120 characters!")
 	private String keywords;
 
 	@Column(nullable = true)
@@ -37,7 +37,7 @@ public class EBookEntity {
 	private String filename;
 
 	@Column(nullable = true)
-	@Size(max = 100, min = 1)
+	@Size(max = 100, min = 1, message = "Book's MIME must contain between 1 and 100 characters!")
 	private String MIME;
 
 	

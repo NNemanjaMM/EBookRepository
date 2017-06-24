@@ -21,6 +21,14 @@ public class EBookService {
 		return ebooks;
 	}
 
+	public boolean hasEBookForCategory(int id) {
+		if (ebookCrud.findByCategoryId(id).size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public EBookEntity findEBook(Integer id) {
 		return ebookCrud.findOne(id);
 	}
