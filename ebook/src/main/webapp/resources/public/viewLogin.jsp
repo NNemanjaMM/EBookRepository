@@ -1,32 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-		                            <div>
-		                            	<form id="register-form" method="post" action="/useradd" style="display: none">
-		                                    <div class="form-group">
-		                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <input type="password" name="repeatpassword" id="repeatpassword" tabindex="2" class="form-control" placeholder="Repeat Password" required="required">
-		                                    </div>
-		                                    <div class="form-group">
-		                                        <div class="row">
-		                                            <div class="col-sm-6 col-sm-offset-3">
-		                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Create Account">
-		                                            </div>
-		                                        </div>
-		                                    </div>
-		                                </form>
-		                            </div>
 <!DOCTYPE>
 <html>
 <head>
@@ -37,7 +11,7 @@
 		    <div>
 		        <span>
 		            <h2>Welcome to online <b>e-Library</b>.</h2>
-		            <h4><i>Please sign in or sign up.</i></h4>
+		            <h4><i>Please log in.</i></h4>
 		        </span>
 		    </div>
 		</div>
@@ -47,7 +21,7 @@
 		            <div class="panel panel-login">
 		                <div class="panel-heading">
 		                    <div class="row">
-		                        <div class="col-xs-6">
+		                        <div class="col">
 		                            <a href="#" class="active" id="login-form-link">Log In</a>
 		                        </div>
 		                    </div>
