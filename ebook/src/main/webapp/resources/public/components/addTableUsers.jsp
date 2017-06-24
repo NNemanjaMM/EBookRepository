@@ -13,7 +13,7 @@
 				<button class="btn btn-default">Update</button>
 			</a>
 			<form action="/userdelete" method="post">
-				<input name="categoryId" value="1" style="display: none;" />
+				<input name="userId" value="1" style="display: none;" />
 				<input type="submit" class="btn btn-default" Value="Delete"/>
 			</form>
 		</td>

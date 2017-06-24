@@ -42,7 +42,7 @@ public class UserController {
 			return "redirect:/";
 		}
 
-		return "redirect:/manageusers";	
+		return "redirect:/usermanage";	
 	}
 	
 	@RequestMapping(value="/useradd", method=RequestMethod.POST)
@@ -51,7 +51,7 @@ public class UserController {
 			return "redirect:/";
 		}
 
-		return "redirect:/manageusers";	
+		return "redirect:/usermanage";	
 	}
 	
 	@RequestMapping(value="/userdelete", method=RequestMethod.POST)
@@ -60,7 +60,7 @@ public class UserController {
 			return "redirect:/";
 		}
 
-		return "redirect:/manageusers";		
+		return "redirect:/usermanage";		
 	}		
 	
 	private boolean hasPermision() {

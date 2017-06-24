@@ -63,7 +63,7 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value="/categorydelete", method=RequestMethod.POST)
-	public String CategoryDelete(@PathVariable("categoryId") String categoryId) {
+	public String CategoryDelete(@RequestParam("categoryId") String categoryId) {
 		if (!hasPermision()) {
 			return "redirect:/";
 		}

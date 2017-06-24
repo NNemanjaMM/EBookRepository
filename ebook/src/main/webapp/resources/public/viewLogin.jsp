@@ -51,7 +51,7 @@
 		                                </form>
 		                            </div>
 		                            <div>
-		                            	<form id="register-form" method="post" action="create" style="display: none">
+		                            	<form id="register-form" method="post" action="/useradd" style="display: none">
 		                                    <div class="form-group">
 		                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required="required">
 		                                    </div>
@@ -64,9 +64,9 @@
 		                                    <div class="form-group">
 		                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="required">
 		                                    </div>
-		                                    <!--<div class="form-group">
-		                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Repeat Password" required="required">
-		                                    </div>-->
+		                                    <div class="form-group">
+		                                        <input type="password" name="repeatpassword" id="repeatpassword" tabindex="2" class="form-control" placeholder="Repeat Password" required="required">
+		                                    </div>
 		                                    <div class="form-group">
 		                                        <div class="row">
 		                                            <div class="col-sm-6 col-sm-offset-3">

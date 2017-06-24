@@ -73,13 +73,13 @@ public class EBookController {
 		return "viewBookAdd";
 	}
 
-	@RequestMapping(value="/bookupdate", method=RequestMethod.PUT)
+	@RequestMapping(value="/bookupdate", method=RequestMethod.POST)
 	public String BookUpdate(@ModelAttribute("book") EBookEntity book) {
 		if (!hasPermision()) {
 			return "redirect:/";
 		}
 
-		return "redirect:/";
+		return "redirect:/bookmanage";
 	}
 
 	@RequestMapping(value="/bookadd", method=RequestMethod.POST)
@@ -88,7 +88,7 @@ public class EBookController {
 			return "redirect:/";
 		}
 
-		return "redirect:/";
+		return "redirect:/bookmanage";
 	}
 
 
@@ -98,10 +98,10 @@ public class EBookController {
 			return "redirect:/";
 		}
 
-		return "redirect:/";
+		return "redirect:/bookmanage";
 	}	
 
-	@RequestMapping(value="/bookdownload", method=RequestMethod.POST)
+	@RequestMapping(value="/bookdownload", method=RequestMethod.GET)
 	public String BookDownload(@RequestParam("bookId") String bookId) {
 
 		return "redirect:/";

@@ -39,8 +39,8 @@ public class SessionController {
 	}
 	
 	@RequestMapping(value="/accountinfo", method=RequestMethod.POST)
-	public String UserUpdateInfo(@RequestParam("username") String username, @RequestParam("firstName") String firstName,
-								 @RequestParam("lastName") String lastName, @RequestParam("category") String category) {
+	public String UserUpdateInfo(@RequestParam("username") String username, @RequestParam("firstname") String firstName,
+								 @RequestParam("lastname") String lastName, @RequestParam("category") String category) {
 
 		return "redirect:/";
 	}
