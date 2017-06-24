@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <br/><br/>
-<a class="create-new-block">
+<a class="create-new-block" href="/categoryadd">
 	Create New Category
 </a>
 <br/><br/>
@@ -13,8 +13,13 @@
 		<td><i>1</i></td>
 		<th class="info">Novel</th>
 		<td class="add">
-			<button class="btn btn-default">Update</button>
-			<button class="btn btn-default">Delete</button>
+			<a href="/categoryupdate?categoryId=0">
+				<button class="btn btn-default">Update</button>
+			</a>
+			<form action="/categorydelete" method="post">
+				<input name="categoryId" value="1" style="display: none;" />
+				<input type="submit" class="btn btn-default" Value="Delete"/>
+			</form>
 		</td>
 	</tr>	
 	<tr><td>&nbsp;</td></tr>

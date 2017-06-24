@@ -10,7 +10,6 @@
 		<div class="jumbotron">
 		    <div>
 		        <span>
-	 				<img src="resources/images/logow.png" />
 		            <h2>Welcome to online <b>e-Library</b>.</h2>
 		            <h4><i>Please sign in or sign up.</i></h4>
 		        </span>

@@ -2,6 +2,9 @@ package com.nemanjam.ebook.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nemanjam.ebook.service.EBookService;
 
@@ -11,11 +14,13 @@ public class SearchController {
 	@Autowired
 	private EBookService eBookService;
 
+	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public String SearchDisplay() {
 		return "viewSearch";
 	}
 
-	public String SearchBooks() {
+	@RequestMapping(value="/searchresult", method=RequestMethod.GET)
+	public String SearchBooks(@RequestParam("") String param) {
 		// vratiti knjige koje odgovaraju
 		// vratiti parametre pretrage
 		return "viewSearchResults";

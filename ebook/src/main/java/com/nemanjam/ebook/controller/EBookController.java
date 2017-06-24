@@ -2,7 +2,12 @@ package com.nemanjam.ebook.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.nemanjam.ebook.entity.EBookEntity;
 import com.nemanjam.ebook.service.EBookService;
 
 @Controller
@@ -11,45 +16,98 @@ public class EBookController {
 	@Autowired
 	private EBookService eBookService;
 
-	public String BooksPreviewDisplay() {
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public String BooksPreviewDisplayAll() {
 		// vratiti ime kategorije
 		// vratiti spisak knjiga
+		
 		return "viewBooks";
 	}
 
-	public String BooksManageDisplay() {
+	@RequestMapping(value="/category", method=RequestMethod.GET)
+	public String BooksPreviewDisplay(@RequestParam("categoryId") String categoryId) {
+		// vratiti ime kategorije
+		// vratiti spisak knjiga
+		
+		return "viewBooks";
+	}
+
+	@RequestMapping(value="/bookmanage", method=RequestMethod.GET)
+	public String BooksManageDisplayAll() {
+		if (!hasPermision()) {
+			return "viewBooks";
+		}
+			
+		// ukoliko korisnik ima dozvolu
 		// vratiti ime kategorije
 		// vratiti spisak knjiga
 		return "viewBooksManage";
 	}
-	
-	public String BookUpdateDisplay() {
+
+	@RequestMapping(value="/bookmanagecategory", method=RequestMethod.GET)
+	public String BooksManageDisplay(@RequestParam("categoryId") String categoryId) {
+		if (!hasPermision()) {
+			return "viewBooks";
+		}
+		// ukoliko korisnik ima dozvolu
+		// vratiti ime kategorije
+		// vratiti spisak knjiga
+		return "viewBooksManage";
+	}
+
+	@RequestMapping(value="/bookupdate", method=RequestMethod.GET)
+	public String BookUpdateDisplay(@RequestParam("bookId") String bookId) {
+		if (!hasPermision()) {
+			return "viewBooks";
+		}
 		// vratiti kljigu koja se menja
 		return "viewBookUpdate";
 	}
-	
+
+	@RequestMapping(value="/bookadd", method=RequestMethod.GET)
 	public String BookAddDisplay() {
+		if (!hasPermision()) {
+			return "viewBooks";
+		}
 
 		return "viewBookAdd";
 	}
-	
-	public void BookUpdate() {
-				
-		BooksManageDisplay();
-	}
-	
-	public void BookAdd() {
 
-		BooksManageDisplay();
-	}
-	
-	public void BookDelete() {
+	@RequestMapping(value="/bookupdate", method=RequestMethod.PUT)
+	public String BookUpdate(@ModelAttribute("book") EBookEntity book) {
+		if (!hasPermision()) {
+			return "redirect:/";
+		}
 
-		BooksManageDisplay();
+		return "redirect:/";
+	}
+
+	@RequestMapping(value="/bookadd", method=RequestMethod.POST)
+	public String BookAdd(@ModelAttribute("book") EBookEntity book) {
+		if (!hasPermision()) {
+			return "redirect:/";
+		}
+
+		return "redirect:/";
+	}
+
+
+	@RequestMapping(value="/bookdelete", method=RequestMethod.POST)
+	public String BookDelete(@RequestParam("bookId") String bookId) {
+		if (!hasPermision()) {
+			return "redirect:/";
+		}
+
+		return "redirect:/";
 	}	
+
+	@RequestMapping(value="/bookdownload", method=RequestMethod.POST)
+	public String BookDownload(@RequestParam("bookId") String bookId) {
+
+		return "redirect:/";
+	}
 	
-	public void BookDownload() {
-		
-		BooksPreviewDisplay();
+	private boolean hasPermision() {
+		return true;
 	}
 }

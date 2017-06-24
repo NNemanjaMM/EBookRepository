@@ -31,62 +31,6 @@ h2 {
 	font-weight: normal; 
 	margin-bottom: 1.5em;
 }
-/*
-a {
-	text-decoration: none; 
-	color: #28C8A0;
-}
-
-p {
-	font-size:14px; 
-	font-weight:normal; 
-	line-height:20px;
-}
-a:hover {
-	text-decoration:none; 
-	color:#59B2E0; 
-	cursor:pointer
-}
-ul li { 
-	list-style:none; 
-	outline:none;
-}
-img { 
-	border:none; 
-}
-h3 {
-	font-size:1.2em; 
-	color:#555; 
-	font-weight:normal; 
-	margin-bottom:1.5em;
-}
-h4{
-	font-size:1.2em; 
-	color:#F00; 
-	font-weight:normal; 
-	margin-bottom:1.5em; 
-	text-align:center; 
-	padding:1em;
-}
-h5 {
-	font-size:1.2em; 
-	color:#555; 
-	font-weight:normal; 
-	margin-bottom:1.5em; 
-	text-align:center; 
-	padding:1em;
-}
-h6 {
-	text-align:right; 
-	font-size:1em; 
-	color:#444; 
-	font-weight:normal; 
-	margin: 0em; 
-	padding-top:0.5em;
-}
-.error {
-	color:red; 
-}
 /*-------------------------------------------------
 HEADER CLASSES
 -------------------------------------------------*/
@@ -333,8 +277,14 @@ VIEWS
 }
 
 .tableBooks .add button {
+	margin-top: 0.5em;
 	width: 7em;
-	margin-bottom: 0.5em;
+	font-style: normal !important;
+}
+
+.tableBooks .add input[type="submit"] {
+	width: 7em;
+	margin-top: 0.5em;
 	font-style: normal !important;
 }
 
@@ -366,6 +316,12 @@ VIEWS
 	margin-right: 0.7em;
 }
 
+.tableUsers .add input[type="submit"] {
+	width: 6em;
+	margin-top: 0.7em; 
+	margin-right: 0.7em;
+}
+
 .tableCategories {
 	margin-top: 2em;
 	text-align: left;
@@ -379,7 +335,14 @@ VIEWS
 
 .tableCategories .add button {
 	width: 6em;
-	margin-right: 0.7em;
+}
+
+.tableCategories .add form {
+	display: inline;"
+}
+
+.tableCategories .add input[type="submit"] {
+	width: 6em;
 }
 /*-------------------------------------------------
 FORMS
@@ -448,46 +411,6 @@ FORMS
 	width: 26em !important;
 	margin-right: 0em !important;
 }
-/*
-.bigInput {
-	width: 20em;
-	height:2em;
-}
-.mediumInput {
-	width: 10em;
-	height:2em;
-}
-.smallInput{
-	width: 5em;
-	height:2em;
-}
-.tinyInput{
-	width: 2em;
-	height:2em;
-}
-.bigButton {
-	width: 10em;
-	margin-left:5em;
-	height:3em;
-}
-.veryBigButton {
-	width: 20em;
-	height: 3em;
-}
-.checkbox {
-	width: 2em;
-	height:2em;
-}
-.lineButton {
-	height: 2em !important;
-	width: 5em !important;
-	margin:0em !important;
-}
-.lineText {
-	height: 2em !important;
-	width: 14.65em !important;
-}
-*/
 
 .form-control:focus {   
 	border-color: rgba(40, 200, 160, 0.8) !important;

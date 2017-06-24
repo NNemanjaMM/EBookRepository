@@ -2,6 +2,9 @@ package com.nemanjam.ebook.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.nemanjam.ebook.service.UserService;
 
@@ -11,40 +14,41 @@ public class SessionController {
 	@Autowired
 	private UserService userService;
 
-	//@RequestMapping(value="/authentication", method=RequestMethod.GET)
+	@RequestMapping(value="/authentication", method=RequestMethod.GET)
 	public String LoginDisplay() {
 		
         return "viewLogin";
 	}
-	
-	public void LoginUser() {
 
-		OpenDisplayBooksPreview();
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String LoginUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+
+		return "redirect:/";
+	}
+
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String LogoutUser() {
+
+		return "redirect:/";
 	}
 	
-	public void LogoutUser() {
-
-		OpenDisplayBooksPreview();
-	}
-	
+	@RequestMapping(value="/account", method=RequestMethod.GET)
 	public String UserUpdateDisplay() {
 		
 		return "viewUserUpdate";
 	}
 	
-	public void UserUpdateInfo() {
+	@RequestMapping(value="/accountinfo", method=RequestMethod.POST)
+	public String UserUpdateInfo(@RequestParam("username") String username, @RequestParam("firstName") String firstName,
+								 @RequestParam("lastName") String lastName, @RequestParam("category") String category) {
 
-		OpenDisplayBooksPreview();
+		return "redirect:/";
 	}
 	
-	public void UserUpdatePassword() {
+	@RequestMapping(value="/accountpassword", method=RequestMethod.POST)
+	public String UserUpdatePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword) {
 
-		OpenDisplayBooksPreview();
-	}
-	
-	private void OpenDisplayBooksPreview() {
-
-        // open all books display page "viewBooks" - EBookController.BooksPreviewDisplay
+		return "redirect:/";
 	}
 	
 /*	

@@ -9,8 +9,13 @@
 		<td class="account"><i>Type:&nbsp;</i></td>
 		<td>Subscriber</td>
 		<td rowspan="2" class="add">
-			<button class="btn btn-default">Update</button>
-			<button class="btn btn-default">Delete</button>
+			<a href="/userupdate?userId=0">
+				<button class="btn btn-default">Update</button>
+			</a>
+			<form action="/userdelete" method="post">
+				<input name="categoryId" value="1" style="display: none;" />
+				<input type="submit" class="btn btn-default" Value="Delete"/>
+			</form>
 		</td>
 	</tr>
 	<tr>
