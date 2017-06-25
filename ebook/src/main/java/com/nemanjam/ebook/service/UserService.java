@@ -41,7 +41,7 @@ public class UserService {
 		userCrud.save(user);
 	}
 
-	public void updateUser(Integer id, UserEntity user) {
+	public void updateUser(UserEntity user) {
 		userCrud.save(user);
 	}
 

@@ -33,11 +33,19 @@
 		                            <div>
 		                            	<form id="login-form" method="post" action="login">
 		                                    <div class="form-group">
-		                                        <input type="text" name="username" id="email" tabindex="1" class="form-control" placeholder="Username" value="">
+		                                        <input type="text" name="username" id="email" tabindex="1" class="form-control" placeholder="Username" required="required">
 		                                    </div>
 		                                    <div class="form-group">
-		                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-		                                    </div>
+		                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required="required">
+		                                    </div>		             
+											<c:if test="${error != null}">
+													<div class="error-field" role="alert">
+														<div class="alert alert-danger">
+															<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+															${error}
+														</div>
+													</div>
+											</c:if>
 		                                    <div class="form-group">
 		                                        <div class="row">
 		                                            <div class="col-sm-6 col-sm-offset-3">

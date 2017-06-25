@@ -13,7 +13,7 @@ public class LogoutInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
+
 		super.postHandle(request, response, handler, modelAndView);
 		
 		HttpSession session = request.getSession();

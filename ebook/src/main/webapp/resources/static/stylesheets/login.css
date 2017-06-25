@@ -8,11 +8,11 @@ body {
 }
 
 
-.h2, h2 {
+h2 {
     font-size: 40px !important;
 	color:#FFF  !important; 
 }
-.h4, h4 {
+h4 {
 	color:#FFF  !important;
 }
 
@@ -22,12 +22,14 @@ body {
     -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
     box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 }
+
 .panel-login>.panel-heading {
     color: #00415d;
     background-color: #fff;
     border-color: #fff;
     text-align:center;
 }
+
 .panel-login>.panel-heading a{
     text-decoration: none;
     color: #666;
@@ -37,10 +39,12 @@ body {
     -moz-transition: all 0.1s linear;
     transition: all 0.1s linear;
 }
+
 .panel-login>.panel-heading a.active{
     color: #28C8A0;
     font-size: 18px;
 }
+
 .panel-login>.panel-heading hr{
     margin-top: 10px;
     margin-bottom: 0px;
@@ -52,6 +56,7 @@ body {
     background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
     background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
 }
+
 .panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
     height: 45px;
     border: 1px solid #ddd;
@@ -73,12 +78,12 @@ body {
 .btn-login {
     background-color: #28C8A0 !important;
     outline: none;
+    padding: 0.5em;
     color: #fff !important;
     font-size: 14px;
     height: auto;
     font-weight: normal;
     padding: 14px 0;
-    text-transform: uppercase;
     border-color: #529de6;
 }
 

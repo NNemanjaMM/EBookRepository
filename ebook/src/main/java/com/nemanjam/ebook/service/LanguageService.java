@@ -29,7 +29,7 @@ public class LanguageService {
 		languageCrud.save(language);
 	}
 
-	public void updateLanguage(Integer id, LanguageEntity language) {
+	public void updateLanguage(LanguageEntity language) {
 		languageCrud.save(language);
 	}
 

@@ -37,7 +37,7 @@ public class EBookService {
 		ebookCrud.save(ebook);
 	}
 
-	public void updateEBook(Integer id, EBookEntity ebook) {
+	public void updateEBook(EBookEntity ebook) {
 		ebookCrud.save(ebook);
 	}
 

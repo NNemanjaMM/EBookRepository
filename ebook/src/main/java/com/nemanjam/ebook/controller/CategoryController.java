@@ -27,9 +27,7 @@ public class CategoryController {
 
 	@RequestMapping(value="/categorymanage", method=RequestMethod.GET)
 	public String CategoriesDisplay(ModelMap model) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 		
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("categories", categories);
@@ -39,9 +37,7 @@ public class CategoryController {
 
 	@RequestMapping(value="/categoryupdate", method=RequestMethod.GET)
 	public String CategoryUpdateDisplay(@RequestParam("categoryId") String categoryId, ModelMap model) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 		
 		int id = Integer.parseInt(categoryId);		
 		CategoryEntity category = categoryService.findCategory(id);
@@ -52,18 +48,14 @@ public class CategoryController {
 
 	@RequestMapping(value="/categoryadd", method=RequestMethod.GET)
 	public String CategoryAddDisplay() {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 		return "viewCategoryAdd";
 	}
 	
 	@RequestMapping(value="/categoryupdate", method=RequestMethod.POST)
 	public String CategoryUpdate(@Valid @ModelAttribute("category") CategoryEntity category, BindingResult result, ModelMap model) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 		
 		if (result.hasErrors()) {
 			String error = result.getAllErrors().get(0).getDefaultMessage();
@@ -72,16 +64,14 @@ public class CategoryController {
 			return "viewCategoryUpdate";
 		}
 		
-		categoryService.updateCategory(category.getId(), category);
+		categoryService.updateCategory(category);
 
 		return "redirect:/categorymanage";
 	}
 	
 	@RequestMapping(value="/categoryadd", method=RequestMethod.POST)
 	public String CategoryAdd(@Valid @ModelAttribute("newCategory") CategoryEntity category, BindingResult result, ModelMap model) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 		
 		if (result.hasErrors()) {
 			String error = result.getAllErrors().get(0).getDefaultMessage();
@@ -97,9 +87,7 @@ public class CategoryController {
 	
 	@RequestMapping(value="/categorydelete", method=RequestMethod.POST)
 	public String CategoryDelete(@RequestParam("categoryId") String categoryId, ModelMap model) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 		int id = Integer.parseInt(categoryId);
 		try {
@@ -114,10 +102,6 @@ public class CategoryController {
 			return "viewCategoriesManage";
 		}
 
-	}	
-	
-	private boolean hasPermision() {
-		return true;
 	}	
 	
 }

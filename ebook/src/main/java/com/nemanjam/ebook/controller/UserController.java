@@ -20,9 +20,7 @@ public class UserController {
 
 	@RequestMapping(value="/usermanage", method=RequestMethod.GET)
 	public String UsersDisplay() {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 		
 		// vratiti spisak kategorija
 		return "viewUsersManage";
@@ -30,9 +28,7 @@ public class UserController {
 
 	@RequestMapping(value="/userupdate", method=RequestMethod.GET)
 	public String UserUpdateDisplay(@RequestParam("userId") String userId) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 		
 		// vratiti kategoriju koja se menja
 		return "viewUserUpdateRole";
@@ -40,9 +36,7 @@ public class UserController {
 
 	@RequestMapping(value="/useradd", method=RequestMethod.GET)
 	public String UserAddDisplay() {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 
 		return "viewUserAdd";
@@ -50,33 +44,23 @@ public class UserController {
 	
 	@RequestMapping(value="/userupdate", method=RequestMethod.POST)
 	public String UserUpdate(@ModelAttribute("user") UserEntity user) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 		return "redirect:/usermanage";	
 	}
 	
 	@RequestMapping(value="/useradd", method=RequestMethod.POST)
 	public String UserAdd(@ModelAttribute("user") UserEntity user) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 		return "redirect:/usermanage";	
 	}
 	
 	@RequestMapping(value="/userdelete", method=RequestMethod.POST)
 	public String UserDelete(@RequestParam("userId") String userId) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 		return "redirect:/usermanage";		
-	}		
-	
-	private boolean hasPermision() {
-		return true;
-	}	
+	}
 
 }

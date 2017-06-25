@@ -36,7 +36,7 @@ public class CategoryService {
 		categoryCrud.save(category);
 	}
 
-	public void updateCategory(Integer id, CategoryEntity category) {
+	public void updateCategory(CategoryEntity category) {
 		categoryCrud.save(category);
 	}
 

@@ -9,35 +9,46 @@
 		<table class="manage-data table-size-small">
 			<tr>
 				<td>Username:</td>
-				<th><input type="text" name="username" id="username" tabindex="1" class="form-control" value="micha12" Placeholder="Enter your username" required="required"></th>
+				<th><input type="text" name="username" id="username" tabindex="1" class="form-control" value="${sessionUser.username}" Placeholder="Enter your username" required="required"></th>
 			</tr>
 			<tr>
 				<td>First name:</td>
-				<th><input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" value="Michael" Placeholder="Enter your first name" required="required"></th>
+				<th><input type="text" name="firstName" id="firstname" tabindex="1" class="form-control" value="${sessionUser.firstName}" Placeholder="Enter your first name" required="required"></th>
 			</tr>
 			<tr>
 				<td>Last name:</td>
-				<th><input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" value="Grant" Placeholder="Enter your last name" required="required"></th>
+				<th><input type="text" name="lastName" id="lastname" tabindex="1" class="form-control" value="${sessionUser.lastName}" Placeholder="Enter your last name" required="required"></th>
 			</tr>
 			<tr>
 				<td>Subscribed to:</td>
 				<th>
 					<select name="category" id="category" tabindex="1" class="form-control" required="required">
-						<option value="8888">All</option>
-						<option value="1">History</option>
-						<option value="2">Novel</option>
+						<option value="8888">All</option>						
+						<c:forEach items="${categories}" var="cat">
+							<option 
+									<c:if test="${cat.id == sessionUser.category.id}">
+										selected
+									</c:if>
+									value="${cat.id}">
+								${cat.name}
+							</option>
+						</c:forEach>
 					</select>
+					<input type="text" name="type" id="type" tabindex="1" required="required" value="${sessionUser.type}" style="display:none">
+					<input type="password" name="password" id="password" tabindex="1" required="required" value="${sessionUser.password}" style="display:none">
 				</th>
 			</tr>
 			
-			<tr style="display:none;">
-				<td colspan="2" class="error-field" role="alert">
-					<div class="alert alert-danger">
-						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-						Enter a valid email address
-					</div>
-				</td>
-			</tr>		
+			<c:if test="${error != null}">
+				<tr>
+					<td colspan="2" class="error-field" role="alert">
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							${error}
+						</div>
+					</td>
+				</tr>	
+			</c:if>	
 			
 			<tr><td colspan="2"><hr/></td></tr>		
 			
@@ -69,14 +80,16 @@
 				<th><input type="password" name="repeatPassword" id="repeatPassword" tabindex="1" class="form-control" Placeholder="Repeat your new password" required="required"></th>
 			</tr>
 			
-			<tr style="display:none;">
-				<td colspan="2" class="error-field" role="alert">
-					<div class="alert alert-danger">
-						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-						Enter a valid email address
-					</div>
-				</td>
-			</tr>	
+			<c:if test="${error2 != null}">
+				<tr>
+					<td colspan="2" class="error-field" role="alert">
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							${error2}
+						</div>
+					</td>
+				</tr>	
+			</c:if>
 			
 			<tr><td colspan="2"><hr/></td></tr>			
 			

@@ -9,7 +9,7 @@
 			        <div class="navbar-collapse collapse">				
 			        	<p class="nav navbar-nav navbar-title"><i>You are currently not registered. Please log in or register to get full expirience.</i></p>	
 			          	<div class="nav navbar-nav navbar-right">
-			          		<a href="/authentication"><button class="btn btn-default">Sign In / Sign Up</button></a>
+			          		<a href="/authentication"><button class="btn btn-default">Sign In</button></a>
 			          	</div>
 			        </div>
 			    </div>

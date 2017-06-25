@@ -27,13 +27,13 @@ public class UserEntity {
 	@Size(max = 30, min = 1, message = "User's last name must contain between 1 and 30 characters!")
 	private String lastName;
 
+	//@IsUsernameUnique
 	@Column(nullable = false)
 	@Size(max = 10, min = 1, message = "User's username must contain between 1 and 10 characters!")
 	private String username;
 
 	@Column(nullable = false)
 	@Size(max = 10, min = 1, message = "User's password must contain between 1 and 10 characters!")
-	@IsUsernameUnique
 	private String password;
 
 	@Column(nullable = false)

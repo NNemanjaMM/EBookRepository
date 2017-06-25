@@ -15,7 +15,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IsUsernameUnique {
 	
-	String message() default "Value must be unique and this one is already in use.";
+	String message() default "Username must be unique. This one is already in use.";
 	
 	Class<?>[] groups() default {};
 	

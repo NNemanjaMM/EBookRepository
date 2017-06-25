@@ -36,9 +36,7 @@ public class EBookController {
 
 	@RequestMapping(value="/bookmanage", method=RequestMethod.GET)
 	public String BooksManageDisplayAll() {
-		if (!hasPermision()) {
-			return "viewBooks";
-		}
+		// REQUIRES PERMISSION
 			
 		// ukoliko korisnik ima dozvolu
 		// vratiti ime kategorije
@@ -48,9 +46,8 @@ public class EBookController {
 
 	@RequestMapping(value="/bookmanagecategory", method=RequestMethod.GET)
 	public String BooksManageDisplay(@RequestParam("categoryId") String categoryId) {
-		if (!hasPermision()) {
-			return "viewBooks";
-		}
+		// REQUIRES PERMISSION
+		
 		// ukoliko korisnik ima dozvolu
 		// vratiti ime kategorije
 		// vratiti spisak knjiga
@@ -59,36 +56,29 @@ public class EBookController {
 
 	@RequestMapping(value="/bookupdate", method=RequestMethod.GET)
 	public String BookUpdateDisplay(@RequestParam("bookId") String bookId) {
-		if (!hasPermision()) {
-			return "viewBooks";
-		}
+		// REQUIRES PERMISSION
+		
 		// vratiti kljigu koja se menja
 		return "viewBookUpdate";
 	}
 
 	@RequestMapping(value="/bookadd", method=RequestMethod.GET)
 	public String BookAddDisplay() {
-		if (!hasPermision()) {
-			return "viewBooks";
-		}
+		// REQUIRES PERMISSION
 
 		return "viewBookAdd";
 	}
 
 	@RequestMapping(value="/bookupdate", method=RequestMethod.POST)
 	public String BookUpdate(@ModelAttribute("book") EBookEntity book) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 		return "redirect:/bookmanage";
 	}
 
 	@RequestMapping(value="/bookadd", method=RequestMethod.POST)
 	public String BookAdd(@ModelAttribute("book") EBookEntity book) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 		return "redirect:/bookmanage";
 	}
@@ -96,9 +86,7 @@ public class EBookController {
 
 	@RequestMapping(value="/bookdelete", method=RequestMethod.POST)
 	public String BookDelete(@RequestParam("bookId") String bookId) {
-		if (!hasPermision()) {
-			return "redirect:/";
-		}
+		// REQUIRES PERMISSION
 
 		return "redirect:/bookmanage";
 	}	
@@ -107,9 +95,5 @@ public class EBookController {
 	public String BookDownload(@RequestParam("bookId") String bookId) {
 
 		return "redirect:/";
-	}
-	
-	private boolean hasPermision() {
-		return true;
 	}
 }
