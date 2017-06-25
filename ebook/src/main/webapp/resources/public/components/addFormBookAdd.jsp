@@ -41,8 +41,14 @@
 				<td>Language</td>
 				<th colspan="2">
 					<select name="language" id="language" class="form-control mediumInput" required="required">
-						<option value="1">Serbian</option>
-						<option value="2">Russian</option>
+						<c:forEach items="${languages}" var="lang">
+							<option 
+								<c:if test="${lang.id == book.languange.id}">
+									selected
+								</c:if> value="${lang.id}">
+								${lang.name}
+							</option>
+						</c:forEach>
 					</select>
 				</th>
 			</tr>
@@ -50,34 +56,37 @@
 				<td>Category:</td>
 				<th colspan="2">
 					<select name="category" id="category" class="form-control mediumInput" required="required">
-						<option value="1">History</option>
-						<option value="2">Novel</option>
+						<c:forEach items="${categories}" var="cat">
+							<option value="${cat.id}">${cat.name}</option>
+						</c:forEach>
 					</select>
 				</th>
 			</tr>
 			<tr>
 				<td>File location:</td>
 				<th>
-					<input type="text" maxlength="200" name="filename" id="filename" class="form-control fileInput" required="required" Placeholder="Browse for book on your PC">
+					<input type="text" maxlength="200" name="filename" id="filename" class="form-control fileInput" required="required" Placeholder="Browse for book">
 				</th>
 				<td>
 					<input type="button" name="manage-book-add-submit" id="manage-book-add-submit" class="btn btn-default" value="Browse">
 				</td>
-			</tr>
+			</tr>			
 			
-			<tr style="display:none;">
-				<td colspan="3" class="error-field" role="alert">
-					<div class="alert alert-danger">
-						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-						Enter a valid email address
-					</div>
-				</td>
-			</tr>	
+			<c:if test="${error != null}">
+				<tr>
+					<td colspan="2" class="error-field" role="alert">
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							${error}
+						</div>
+					</td>
+				</tr>
+			</c:if>		
 			
-			<tr><td colspan="3"><hr/></td></tr>	
+			<tr><td colspan="2"><hr/></td></tr>	
 			
 			<tr>
-				<td colspan="3" class="button-field">
+				<td colspan="2" class="button-field">
 					<input type="submit" name="manage-book-add-submit" id="manage-book-add-submit" class="btn btn-default" value="Add Book">
 				</td>
 			</tr>

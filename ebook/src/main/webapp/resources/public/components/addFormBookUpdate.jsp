@@ -10,39 +10,46 @@
 			<tr>
 				<td>Title:</td>
 				<th colspan="2">
-					<input type="text" maxlength="80" name="title" id="title" class="form-control veryBigInput" value="Duge noći i crne zastave" Placeholder="Enter book title" required="required">
+					<input type="text" maxlength="80" name="title" id="title" class="form-control veryBigInput" value="${book.title}" Placeholder="Enter book title" required="required">
+					<input type="text" maxlength="80" name="id" id="id" class="form-control veryBigInput" value="${book.id}" readonly="readonly" required="required" style="display:none;">
 				</th>
 			</tr>
 			<tr>
 				<td>Author:</td>
 				<th colspan="2">
-					<input type="text" maxlength="120" name="author" id="author" class="form-control veryBigInput" value="Dejan Stojiljković" Placeholder="Enter book author">
+					<input type="text" maxlength="120" name="author" id="author" class="form-control veryBigInput" value="${book.author}" Placeholder="Enter book author">
 				</th>
 			</tr>
 			<tr>
 				<td>Publication year:</td>
 				<th colspan="2">
-					<input type="number" name="publicationYear" id="publicationYear" min="1" max="2017" class="form-control smallInput" value="2011">
+					<input type="number" name="publicationYear" id="publicationYear" min="1" max="2017" class="form-control smallInput" value="${book.publicationYear}">
 				</th>
 			</tr>
 			<tr>
 				<td>Keywords:</td>
 				<th colspan="2">
-					<input type="text" maxlength="120" name="keywords" id="keywords" class="form-control veryBigInput" value="Kosovka bitka, Miloš Obilić" Placeholder="List book keywords">
+					<input type="text" maxlength="120" name="keywords" id="keywords" class="form-control veryBigInput" value="${book.keywords}" Placeholder="List book keywords">
 				</th>
 			</tr>
 			<tr>
 				<td>MIME:</td>
 				<th colspan="2">
-					<input type="text" maxlength="100" name="MIME" id="MIME" class="form-control veryBigInput" value="mime, mime, mime, mime" Placeholder="Enter book MIME">
+					<input type="text" maxlength="100" name="MIME" id="MIME" class="form-control veryBigInput" value="${book.MIME}" Placeholder="Enter book MIME">
 				</th>
 			</tr>
 			<tr>
 				<td>Language</td>
 				<th colspan="2">
 					<select name="language" id="language" class="form-control mediumInput" required="required">
-						<option value="1">Serbian</option>
-						<option value="2">Russian</option>
+						<c:forEach items="${languages}" var="lang">
+							<option 
+								<c:if test="${lang.id == book.language.id}">
+									selected
+								</c:if> value="${lang.id}">
+								${lang.name}
+							</option>
+						</c:forEach>
 					</select>
 				</th>
 			</tr>
@@ -50,34 +57,43 @@
 				<td>Category:</td>
 				<th colspan="2">
 					<select name="category" id="category" class="form-control mediumInput" required="required">
-						<option value="1">History</option>
-						<option value="2">Novel</option>
+						<c:forEach items="${categories}" var="cat">
+							<option
+								<c:if test="${cat.id == book.category.id}">
+									selected
+								</c:if> value="${cat.id}">							
+								${cat.name}
+							</option>
+						</c:forEach>
 					</select>
 				</th>
 			</tr>
 			<tr>
 				<td>File location:</td>
 				<th>
-					<input type="text" maxlength="200" name="filename" id="filename" class="form-control fileInput" value="E:\Users\User1\Documents\book.pdf" Placeholder="Browse for book on your PC" required="required">
+					<input type="text" maxlength="200" name="filename" id="filename" class="form-control fileInput" value="${book.filename}" Placeholder="Browse for book" required="required">
 				</th>
 				<td>
 					<input type="button" name="manage-book-add-submit" id="manage-book-add-submit" class="btn btn-default" value="Browse">
 				</td>
 			</tr>
 			
-			<tr style="display:none;">
-				<td colspan="3" class="error-field" role="alert">
-					<div class="alert alert-danger">
-						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-						Enter a valid email address
-					</div>
-				</td>
-			</tr>	
+			<!-- pile te voli -->
+			<c:if test="${error != null}">
+				<tr>
+					<td colspan="2" class="error-field" role="alert">
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							${error}
+						</div>
+					</td>
+				</tr>
+			</c:if>		
 			
-			<tr><td colspan="3"><hr/></td></tr>	
+			<tr><td colspan="2"><hr/></td></tr>	
 			
 			<tr>
-				<td colspan="3" class="button-field">
+				<td colspan="2" class="button-field">
 					<input type="submit" name="manage-book-update-submit" id="manage-book-update-submit" class="btn btn-default" value="Update Book">
 				</td>
 			</tr>

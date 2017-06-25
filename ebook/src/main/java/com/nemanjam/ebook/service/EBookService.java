@@ -29,6 +29,10 @@ public class EBookService {
 		}
 	}
 
+	public List<EBookEntity> findEBooksForCategory(Integer id) {
+		return ebookCrud.findByCategoryId(id);
+	}
+
 	public EBookEntity findEBook(Integer id) {
 		return ebookCrud.findOne(id);
 	}

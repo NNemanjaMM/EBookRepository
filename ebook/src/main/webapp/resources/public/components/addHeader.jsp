@@ -47,7 +47,7 @@
 						    <ul class="dropdown-menu">
 						     	<li><a href="/bookmanage">All Books</a></li>						     				
 								<c:forEach items="${categories}" var="cat">
-						     		<li class=""><a href="/category?categoryId=${cat.id}">${cat.name}</a></li>
+						     		<li class=""><a href="/bookmanagecategory?categoryId=${cat.id}">${cat.name}</a></li>
 								</c:forEach>
 						    </ul>
 						</li>		
