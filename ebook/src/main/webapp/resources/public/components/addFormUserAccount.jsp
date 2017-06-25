@@ -19,10 +19,13 @@
 				<td>Last name:</td>
 				<th><input type="text" name="lastName" id="lastname" tabindex="1" class="form-control" value="${sessionUser.lastName}" Placeholder="Enter your last name" required="required"></th>
 			</tr>
-			<tr>
+			<tr <c:if test="${sessionUser.type == 'a'}">style="display:none;"</c:if> >
 				<td>Subscribed to:</td>
 				<th>
-					<select name="category" id="category" tabindex="1" class="form-control" required="required">
+					<select name="category" id="category" tabindex="1" class="form-control" required="required"
+							<c:if test="${sessionUser.type == 'a'}">
+								disabled="disabled" style="display:none;"
+							</c:if>	>
 						<option value="8888">All</option>						
 						<c:forEach items="${categories}" var="cat">
 							<option 
