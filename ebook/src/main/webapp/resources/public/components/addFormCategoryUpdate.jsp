@@ -13,7 +13,7 @@
 					<input type="text" name="id" id="id" tabindex="1" class="form-control" value="${category.id}" style="display:none;" required="required">
 				</td>
 				<th>
-					<input type="text" name="name" id="name" tabindex="1" class="form-control" value="${category.name}" placeholder="Enter new category name" required="required">
+					<input type="text" maxlength="30" name="name" id="name" tabindex="1" class="form-control" value="${category.name}" placeholder="Enter new category name" required="required">
 				</th>
 			</tr>
 			

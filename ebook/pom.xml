@@ -62,7 +62,12 @@
 		    <artifactId>jstl</artifactId>
 		    <version>1.2</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
-    	
+
+		<dependency>
+			<groupId>com.rometools</groupId>
+			<artifactId>rome</artifactId>
+			<version>1.6.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

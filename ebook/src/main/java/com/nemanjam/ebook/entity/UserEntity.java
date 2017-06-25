@@ -9,8 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.nemanjam.ebook.validation.IsUsernameUnique;
-
 @Entity
 @Table(name = "user")
 public class UserEntity {

@@ -15,17 +15,22 @@ function clearInputs(button) {
 }
 
 $(document).ready(function() {
-	$(".alterationToPdf").click(function() {	
-		var id = $(this).parents("tr").find(".documentId").text();
-		var url = '/overview/topdf?id='+id;
-		window.open( url, "_blank");
-	});
-	$(".alterationPreview").click(function() {		
-		var id = $(this).parents("tr").find(".documentId").text();
-		var url = '/overview/preview?id='+id;
-		window.open( url, "_blank");
-	});
 
     $('.dropdown-toggle').dropdown();
-
+    
+	if ($('.select-user-type').val() == 'a') {
+		$('.select-user-category').val("8888");
+		$('.select-user-category').prop('disabled', true);
+	} else {
+		$('.select-user-category').prop('disabled', false);
+	}
+    
+    $('.select-user-type').on('change', function() {
+    	  if (this.value == 'a') {
+    		  $('.select-user-category').val("8888");
+    		  $('.select-user-category').prop('disabled', true);
+    	  } else {
+    		  $('.select-user-category').prop('disabled', false);
+    	  }
+    })
 })

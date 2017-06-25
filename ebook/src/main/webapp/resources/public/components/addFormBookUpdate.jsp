@@ -10,13 +10,13 @@
 			<tr>
 				<td>Title:</td>
 				<th colspan="2">
-					<input type="text" name="title" id="title" class="form-control veryBigInput" value="Duge noći i crne zastave" Placeholder="Enter book title" required="required">
+					<input type="text" maxlength="80" name="title" id="title" class="form-control veryBigInput" value="Duge noći i crne zastave" Placeholder="Enter book title" required="required">
 				</th>
 			</tr>
 			<tr>
 				<td>Author:</td>
 				<th colspan="2">
-					<input type="text" name="author" id="author" class="form-control veryBigInput" value="Dejan Stojiljković" Placeholder="Enter book author">
+					<input type="text" maxlength="120" name="author" id="author" class="form-control veryBigInput" value="Dejan Stojiljković" Placeholder="Enter book author">
 				</th>
 			</tr>
 			<tr>
@@ -28,13 +28,13 @@
 			<tr>
 				<td>Keywords:</td>
 				<th colspan="2">
-					<input type="text" name="keywords" id="keywords" class="form-control veryBigInput" value="Kosovka bitka, Miloš Obilić" Placeholder="List book keywords">
+					<input type="text" maxlength="120" name="keywords" id="keywords" class="form-control veryBigInput" value="Kosovka bitka, Miloš Obilić" Placeholder="List book keywords">
 				</th>
 			</tr>
 			<tr>
 				<td>MIME:</td>
 				<th colspan="2">
-					<input type="text" name="MIME" id="MIME" class="form-control veryBigInput" value="mime, mime, mime, mime" Placeholder="Enter book MIME">
+					<input type="text" maxlength="100" name="MIME" id="MIME" class="form-control veryBigInput" value="mime, mime, mime, mime" Placeholder="Enter book MIME">
 				</th>
 			</tr>
 			<tr>
@@ -58,7 +58,7 @@
 			<tr>
 				<td>File location:</td>
 				<th>
-					<input type="text" name="filename" id="filename" class="form-control fileInput" value="E:\Users\User1\Documents\book.pdf" Placeholder="Browse for book on your PC" required="required">
+					<input type="text" maxlength="200" name="filename" id="filename" class="form-control fileInput" value="E:\Users\User1\Documents\book.pdf" Placeholder="Browse for book on your PC" required="required">
 				</th>
 				<td>
 					<input type="button" name="manage-book-add-submit" id="manage-book-add-submit" class="btn btn-default" value="Browse">

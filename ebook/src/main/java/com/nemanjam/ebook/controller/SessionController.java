@@ -1,5 +1,6 @@
 package com.nemanjam.ebook.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -32,7 +33,7 @@ public class SessionController {
 
 	@RequestMapping(value="/authentication", method=RequestMethod.GET)
 	public String LoginDisplay() {
-		
+
         return "viewLogin";
 	}
 
@@ -48,7 +49,7 @@ public class SessionController {
 			//}
 		}
 		model.put("error", "Wrong username/password combination");
-		
+
 		return "viewLogin";
 	}
 
@@ -56,15 +57,14 @@ public class SessionController {
 	public String LogoutUser(ModelMap model) {
 		model.remove("sessionUser");
 
+		addCategoriesToModel(model);
 		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/account", method=RequestMethod.GET)
 	public String UserUpdateDisplay(ModelMap model) {
 		
-		List<CategoryEntity> categories = categoryService.getAllCategories();
-		model.put("categories", categories);
-		
+		addCategoriesToModel(model);
 		return "viewUserUpdate";
 	}
 	
@@ -87,27 +87,30 @@ public class SessionController {
 			StringBuilder errorBuilder = new StringBuilder();
 			if (usernameError != null) {
 				errorBuilder.append(usernameError);
-				errorBuilder.append(System.getProperty("line.separator"));
+				errorBuilder.append("<br/>");
 			}		
 			
-			List<CategoryEntity> categories = categoryService.getAllCategories();
 			for (ObjectError objectError : result.getAllErrors()) {
 				String error = objectError.getDefaultMessage();
 				errorBuilder.append(error);
-				errorBuilder.append(System.getProperty("line.separator"));
+				errorBuilder.append("<br/>");
 			}
 			
-			model.put("categories", categories);
 			model.put("error", errorBuilder.toString());
 
+			addCategoriesToModel(model);
 			return "viewUserUpdate";
 			
 		}
 		user.setId(sessionUser.getId());
+		user.setPassword(sessionUser.getPassword());
+		user.setType(sessionUser.getType());
+		user.setCategory(sessionUser.getCategory());
 		
 		model.put("sessionUser", user);
 		userService.updateUser(user);
 
+		addCategoriesToModel(model);
 		return "redirect:/";
 	}
 	
@@ -124,7 +127,8 @@ public class SessionController {
 				user.setPassword(newPassword);
 				model.put("sessionUser", user);
 				userService.updateUser(user);
-				
+
+				addCategoriesToModel(model);
 				return "redirect:/";
 			} else {
 				error = "User's old password is not correct";
@@ -133,11 +137,16 @@ public class SessionController {
 			error = "New password and repeated password are not equal";
 		}
 		
-		List<CategoryEntity> categories = categoryService.getAllCategories();
-		model.put("categories", categories);
 		model.put("error2", error);
 
+		addCategoriesToModel(model);
 		return "viewUserUpdate";
+	}
+	
+	private void addCategoriesToModel(ModelMap model) {
+		List<CategoryEntity> categories = categoryService.getAllCategories();
+		Collections.sort(categories, (CategoryEntity c1, CategoryEntity c2) -> c1.getName().compareTo(c2.getName()));		
+		model.put("categories", categories);		
 	}
 	
 }

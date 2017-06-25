@@ -9,46 +9,71 @@
 		<table class="manage-data table-size-small">
 			<tr>
 				<td>Username:</td>
-				<th><input type="text" name="username" id="username" tabindex="1" class="form-control" value="" Placeholder="Enter user's username" required="required"></th>
+				<th><input type="text" maxlength="10" name="username" id="username" tabindex="1" class="form-control" value="${user.username}" Placeholder="Enter user's username" required="required"></th>
 			</tr>
 			<tr>
 				<td>First name:</td>
-				<th><input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" value="" Placeholder="Enter user's first name" required="required"></th>
+				<th><input type="text" maxlength="30" name="firstName" id="firstName" tabindex="1" class="form-control" value="${user.firstName}" Placeholder="Enter user's first name" required="required"></th>
 			</tr>
 			<tr>
 				<td>Last name:</td>
-				<th><input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" value="" Placeholder="Enter user's last name" required="required"></th>
+				<th><input type="text" maxlength="30" name="lastName" id="lastName" tabindex="1" class="form-control" value="${user.lastName}" Placeholder="Enter user's last name" required="required"></th>
+			</tr>
+			<tr>
+				<td>Role:</td>
+				<th>
+					<select name="type" id="type" tabindex="1" class="form-control select-user-type" required="required">
+						<option value="s"
+							<c:if test="${user.type == 's'}">
+								selected
+							</c:if>
+						>Subscriber</option>		
+						<option value="a"
+							<c:if test="${user.type == 'a'}">
+								selected
+							</c:if>
+						>Administrator</option>
+					</select>
+				</th>
 			</tr>
 			<tr>
 				<td>Subscribed to:</td>
 				<th>
-					<select name="category" id="category" tabindex="1" class="form-control" required="required">
-						<option value="8888">All</option>
-						<option value="1">History</option>
-						<option value="2">Novel</option>
+					<select name="category" id="category" tabindex="1" class="form-control select-user-category" required="required">
+						<option value="8888">All</option>						
+						<c:forEach items="${categories}" var="cat">
+							<option 
+									<c:if test="${cat.id == user.category.id}">
+										selected
+									</c:if>
+									value="${cat.id}">
+								${cat.name}
+							</option>
+						</c:forEach>
 					</select>
-					<input type="text" name="type" id="type" tabindex="1" class="form-control" value="s" Placeholder="Enter user's last name" required="required" style="display:none;">
 				</th>
 			</tr>
 			
 			<tr>
 				<td>Password:</td>
-				<th><input type="password" name="password" id="password" tabindex="1" class="form-control" Placeholder="Enter user's password" required="required"></th>
+				<th><input type="password" maxlength="10" name="password" id="password" tabindex="1" class="form-control" Placeholder="Enter user's password" required="required"></th>
 			</tr>
 			
 			<tr>
 				<td>Repeat Password:</td>
-				<th><input type="password" name="repeatPassword" id="repeatPassword" tabindex="1" class="form-control" Placeholder="Repeat user's password" required="required"></th>
+				<th><input type="password" maxlength="10" name="repeatPassword" id="repeatPassword" tabindex="1" class="form-control" Placeholder="Repeat user's password" required="required"></th>
 			</tr>
 			
-			<tr style="display:none;">
-				<td colspan="2" class="error-field" role="alert">
-					<div class="alert alert-danger">
-						<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-						Enter a valid email address
-					</div>
-				</td>
-			</tr>		
+			<c:if test="${error != null}">
+				<tr>
+					<td colspan="2" class="error-field" role="alert">
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							${error}
+						</div>
+					</td>
+				</tr>	
+			</c:if>	
 			
 			<tr><td colspan="2"><hr/></td></tr>		
 			

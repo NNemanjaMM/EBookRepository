@@ -9,7 +9,7 @@
 			        <div class="navbar-collapse collapse">				
 			        	<p class="nav navbar-nav navbar-title"><i>You are currently not registered. Please log in or register to get full expirience.</i></p>	
 			          	<div class="nav navbar-nav navbar-right">
-			          		<a href="/authentication"><button class="btn btn-default">Sign In</button></a>
+			          		<a href="/authentication"><button class="btn btn-default" style="width: 8em;">Sign In</button></a>
 			          	</div>
 			        </div>
 			    </div>
@@ -45,9 +45,10 @@
 						<li role="presentation" class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#"> Update Books <span class="caret"></span></a>
 						    <ul class="dropdown-menu">
-						     	<li><a href="/bookmanage">All Books</a></li>
-						     	<li><a href="/bookmanagecategory?categoryId=0">Novel</a></li>
-						     	<li><a href="/bookmanagecategory?categoryId=1">History</a></li>
+						     	<li><a href="/bookmanage">All Books</a></li>						     				
+								<c:forEach items="${categories}" var="cat">
+						     		<li class=""><a href="/category?categoryId=${cat.id}">${cat.name}</a></li>
+								</c:forEach>
 						    </ul>
 						</li>		
 						<li role="presentation" class="">

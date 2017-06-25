@@ -9,7 +9,7 @@
 		<table class="manage-data table-size-small">
 			<tr>
 				<td>Category:</td>
-				<th><input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Enter new category name" required="required"></th>
+				<th><input type="text" maxlength="30" name="name" id="name" tabindex="1" class="form-control" placeholder="Enter new category name" required="required"></th>
 			</tr>
 			
 			<c:if test="${error != null}">

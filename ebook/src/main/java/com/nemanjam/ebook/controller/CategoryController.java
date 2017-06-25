@@ -1,5 +1,6 @@
 package com.nemanjam.ebook.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -29,9 +30,7 @@ public class CategoryController {
 	public String CategoriesDisplay(ModelMap model) {
 		// REQUIRES PERMISSION
 		
-		List<CategoryEntity> categories = categoryService.getAllCategories();
-		model.addAttribute("categories", categories);
-		
+		addCategoriesToModel(model);
 		return "viewCategoriesManage";
 	}
 
@@ -42,14 +41,16 @@ public class CategoryController {
 		int id = Integer.parseInt(categoryId);		
 		CategoryEntity category = categoryService.findCategory(id);
 		model.put("category", category);
-		
+
+		addCategoriesToModel(model);
 		return "viewCategoryUpdate";
 	}
 
 	@RequestMapping(value="/categoryadd", method=RequestMethod.GET)
-	public String CategoryAddDisplay() {
+	public String CategoryAddDisplay(ModelMap model) {
 		// REQUIRES PERMISSION
 
+		addCategoriesToModel(model);
 		return "viewCategoryAdd";
 	}
 	
@@ -61,11 +62,14 @@ public class CategoryController {
 			String error = result.getAllErrors().get(0).getDefaultMessage();
 			model.put("error", error);
 			model.put("category", category);
+			
+			addCategoriesToModel(model);
 			return "viewCategoryUpdate";
 		}
 		
 		categoryService.updateCategory(category);
 
+		addCategoriesToModel(model);
 		return "redirect:/categorymanage";
 	}
 	
@@ -77,11 +81,14 @@ public class CategoryController {
 			String error = result.getAllErrors().get(0).getDefaultMessage();
 			model.put("error", error);
 			model.put("category", category);
+			
+			addCategoriesToModel(model);
 			return "viewCategoryUpdate";
 		}
 		
 		categoryService.addCategory(category);
 
+		addCategoriesToModel(model);
 		return "redirect:/categorymanage";
 	}
 	
@@ -92,16 +99,22 @@ public class CategoryController {
 		int id = Integer.parseInt(categoryId);
 		try {
 			categoryService.deleteCategory(id);
+			
+			addCategoriesToModel(model);
 			return "redirect:/categorymanage";
 		} catch (ExceptionRemovingObject e) {
 			model.put("error", "Can not delete category that is in use!");
-			
-			List<CategoryEntity> categories = categoryService.getAllCategories();
-			model.addAttribute("categories", categories);
-			
+
+			addCategoriesToModel(model);
 			return "viewCategoriesManage";
 		}
 
 	}	
+	
+	private void addCategoriesToModel(ModelMap model) {
+		List<CategoryEntity> categories = categoryService.getAllCategories();
+		Collections.sort(categories, (CategoryEntity c1, CategoryEntity c2) -> c1.getName().compareTo(c2.getName()));		
+		model.put("categories", categories);		
+	}
 	
 }

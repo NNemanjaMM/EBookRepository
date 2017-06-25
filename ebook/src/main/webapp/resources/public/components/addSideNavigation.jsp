@@ -6,9 +6,10 @@
 		<li class="enabled-header"><a href="/">All Books</a></li>
 		<li class="enabled-header"><a href="/search">Search</a></li>
 		<li class="disabled"><a href="#">Books by Category</a>
-			<ul class="panel-categories nav nav-pills nav-stacked">
-		     	<li class=""><a href="/category?categoryId=0">Novel</a></li>
-		     	<li class=""><a href="/category?categoryId=1">History</a></li>
+			<ul class="panel-categories nav nav-pills nav-stacked">					
+				<c:forEach items="${categories}" var="cat">
+		     		<li class=""><a href="/category?categoryId=${cat.id}">${cat.name}</a></li>
+				</c:forEach>
 			</ul>
 		</li>
 	</ul>
