@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.nemanjam.ebook.entity.CategoryEntity;
 import com.nemanjam.ebook.entity.EBookDisplay;
@@ -22,6 +23,7 @@ import com.nemanjam.ebook.entity.LanguageEntity;
 import com.nemanjam.ebook.service.CategoryService;
 import com.nemanjam.ebook.service.EBookService;
 import com.nemanjam.ebook.service.LanguageService;
+import com.nemanjam.ebook.service.StorageService;
 
 @Controller
 @SessionAttributes("sessionUser")
@@ -35,6 +37,9 @@ public class EBookController {
 	
 	@Autowired
 	private LanguageService languageService;
+	
+	@Autowired
+	private StorageService storageService;
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String BooksPreviewDisplayAll(ModelMap model) {
@@ -105,40 +110,27 @@ public class EBookController {
 	}
 
 	@RequestMapping(value="/bookadd", method=RequestMethod.GET)
-	public String BookAddDisplay(ModelMap model) {
+	public String BookAddUploadDisplay(ModelMap model) {
 		// REQUIRES PERMISSION
 
-		addLanguageToModel(model);
 		addCategoriesToModel(model);
-		return "viewBookAdd";
+		return "viewBookAddUpload";
 	}
 
-	@RequestMapping(value="/bookupdate", method=RequestMethod.POST)
-	public String BookUpdate(@ModelAttribute("book") EBookEntity book, BindingResult result, ModelMap model) {
+	@RequestMapping(value="/bookupload", method=RequestMethod.POST)
+	public String BookAddInfoDisplay(@RequestParam("file") MultipartFile file, ModelMap model) {
 		// REQUIRES PERMISSION
 
-		if (result.hasErrors()) {
-			StringBuilder errorBuilder = new StringBuilder();
-			
-			for (ObjectError objectError : result.getAllErrors()) {
-				String error = objectError.getDefaultMessage();
-				errorBuilder.append(error);
-				errorBuilder.append("<br/>");
-			}
-			
-			model.put("error", errorBuilder.toString());
-
-			addCategoriesToModel(model);
-			addLanguageToModel(model);
-			return "viewBookUpdate";			
+		try {
+			storageService.store(file);
+			model.addAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");			
+		} catch (Exception e) {
+			model.addAttribute("message", "FAIL to upload " + file.getOriginalFilename() + "!");
 		}
 		
-		eBookService.updateEBook(book);		
-
-		model.put("selectBy", "All books");		
+		addLanguageToModel(model);
 		addCategoriesToModel(model);
-		addBooksToModel(model);
-		return "viewBooksManage";
+		return "viewBookAddInfo";
 	}
 
 	@RequestMapping(value="/bookadd", method=RequestMethod.POST)
@@ -168,6 +160,33 @@ public class EBookController {
 		return "viewBooksManage";
 	}
 
+	@RequestMapping(value="/bookupdate", method=RequestMethod.POST)
+	public String BookUpdate(@ModelAttribute("book") EBookEntity book, BindingResult result, ModelMap model) {
+		// REQUIRES PERMISSION
+
+		if (result.hasErrors()) {
+			StringBuilder errorBuilder = new StringBuilder();
+			
+			for (ObjectError objectError : result.getAllErrors()) {
+				String error = objectError.getDefaultMessage();
+				errorBuilder.append(error);
+				errorBuilder.append("<br/>");
+			}
+			
+			model.put("error", errorBuilder.toString());
+
+			addCategoriesToModel(model);
+			addLanguageToModel(model);
+			return "viewBookUpdate";			
+		}
+		
+		eBookService.updateEBook(book);		
+
+		model.put("selectBy", "All books");		
+		addCategoriesToModel(model);
+		addBooksToModel(model);
+		return "viewBooksManage";
+	}
 
 	@RequestMapping(value="/bookdelete", method=RequestMethod.POST)
 	public String BookDelete(@RequestParam("bookId") String bookId, ModelMap model) {

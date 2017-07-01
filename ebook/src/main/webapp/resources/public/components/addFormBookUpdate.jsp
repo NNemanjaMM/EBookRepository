@@ -69,12 +69,12 @@
 				</th>
 			</tr>
 			<tr>
-				<td>File location:</td>
+				<td>e-Book File:</td>
 				<th>
-					<input type="text" maxlength="200" name="filename" id="filename" class="form-control fileInput" value="${book.filename}" Placeholder="Browse for book" required="required">
+					<input type="text" maxlength="200" name="filename" id="filename" class="form-control veryBigInput" readonly="readonly" value="${book.filename}" Placeholder="Browse for book" required="required">
 				</th>
 				<td>
-					<input type="button" name="manage-book-add-submit" id="manage-book-add-submit" class="btn btn-default" value="Browse">
+					<input type="button" name="manage-book-add-submit" id="manage-book-add-submit" class="btn btn-default" value="Browse" style="display:none;">
 				</td>
 			</tr>
 			

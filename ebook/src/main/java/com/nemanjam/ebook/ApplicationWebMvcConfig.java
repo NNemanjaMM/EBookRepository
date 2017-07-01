@@ -18,15 +18,17 @@ public class ApplicationWebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
+		
 		registry.addInterceptor(new SessionInterceptorAdmin()).addPathPatterns(
 				"/categoryupdate", "/categorymanage", "/categoryadd", "/categorydelete",
 				"/usermanage", "/userupdate", "/useradd", "/userdelete",
-				"/bookmanage", "/bookmanagecategory", "/bookupdate", "/bookadd", "/bookdelete");
+				"/bookmanage", "/bookmanagecategory", "/bookupdate", "/bookupload", "/bookadd", "/bookdelete");
 
 		registry.addInterceptor(new SessionInterceptorSubscriber()).addPathPatterns(
 				"/bookdownload", "/logout", "/account", "/accountinfo", "/accountpassword");
 		
 		registry.addInterceptor(new LogoutInterceptor()).addPathPatterns("/logout");
+		
 	}
 	  
     @Override

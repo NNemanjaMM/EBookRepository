@@ -17,7 +17,7 @@
 			<div class="content">
     			<div class="center-content">
 					
-					<jsp:include page="components/addFormBookAdd.jsp" />
+					<jsp:include page="components/addFormBookAddUpload.jsp" />
 					
         		</div>
 			</div>		

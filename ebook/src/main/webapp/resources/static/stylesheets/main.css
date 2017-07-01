@@ -401,6 +401,10 @@ FORMS
 	width: 23em;	
 }
 
+.table-size-medium {
+	width: 30em;	
+}
+
 .table-size-big {
 	width: 39em;	
 }
@@ -411,6 +415,10 @@ FORMS
 
 .mediumInput {
 	width: 15em !important;
+}
+
+.bigInput {
+	width: 23em !important;
 }
 
 .veryBigInput {

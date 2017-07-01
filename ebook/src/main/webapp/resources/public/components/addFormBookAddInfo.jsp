@@ -63,13 +63,10 @@
 				</th>
 			</tr>
 			<tr>
-				<td>File location:</td>
+				<td>e-Book File:</td>
 				<th>
-					<input type="text" maxlength="200" name="filename" id="filename" class="form-control fileInput" required="required" Placeholder="Browse for book">
+					<input type="text" maxlength="200" readonly="readonly" name="filename" id="filename" class="form-control veryBigInput" required="required">
 				</th>
-				<td>
-					<input type="button" name="manage-book-add-submit" id="manage-book-add-submit" class="btn btn-default" value="Browse">
-				</td>
 			</tr>			
 			
 			<c:if test="${error != null}">
