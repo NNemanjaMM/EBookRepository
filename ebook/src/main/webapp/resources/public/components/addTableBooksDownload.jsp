@@ -3,7 +3,19 @@
 
 <h2>${selectBy}</h2>
 
+<c:if test="${download_error != null}">
+	<tr>
+		<td colspan="2" class="error-field" role="alert">
+			<div class="alert alert-danger">
+				<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+				${download_error}
+			</div>
+		</td>
+	</tr>
+</c:if>	
+	
 <table class="tableBooks">
+
 
 	<c:forEach items="${books}" var="book">
 	

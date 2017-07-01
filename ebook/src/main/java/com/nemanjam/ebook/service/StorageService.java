@@ -5,9 +5,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
- 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -17,15 +15,26 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class StorageService {
 	
-	Logger log = LoggerFactory.getLogger(this.getClass().getName());
 	private final Path rootLocation = Paths.get("storage");
  
-	public void store(MultipartFile file){
+	public String store(MultipartFile file){
+		String fileName = null;
 		try {
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+			fileName = file.getOriginalFilename();
+			if(!fileName.endsWith(".pdf")) {
+				return fileName;
+			}
+			Path filePath = this.rootLocation.resolve(fileName);
+            Resource resource = new UrlResource(filePath.toUri());
+            if(resource.exists()) {
+            	fileName = fileName.substring(0, fileName.length() - 4);
+				fileName = fileName + "_"  + System.currentTimeMillis() + ".pdf";
+            }
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(fileName));
         } catch (Exception e) {
-        	throw new RuntimeException("FAIL!");
+        	throw new RuntimeException();
         }
+		return fileName;
 	}
  
     public Resource loadFile(String filename) {
@@ -34,11 +43,11 @@ public class StorageService {
             Resource resource = new UrlResource(file.toUri());
             if(resource.exists() || resource.isReadable()) {
                 return resource;
-            }else{
-            	throw new RuntimeException("FAIL!");
+            } else {
+            	throw new RuntimeException();
             }
         } catch (MalformedURLException e) {
-        	throw new RuntimeException("FAIL!");
+        	throw new RuntimeException();
         }
     }
     

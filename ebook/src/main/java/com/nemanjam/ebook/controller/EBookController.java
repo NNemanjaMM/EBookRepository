@@ -1,10 +1,16 @@
 package com.nemanjam.ebook.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -120,13 +126,22 @@ public class EBookController {
 	@RequestMapping(value="/bookupload", method=RequestMethod.POST)
 	public String BookAddInfoDisplay(@RequestParam("file") MultipartFile file, ModelMap model) {
 		// REQUIRES PERMISSION
-
+		
+		String savedFileName = null;
 		try {
-			storageService.store(file);
-			model.addAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");			
+			savedFileName = storageService.store(file);		
+			if (savedFileName == null) {
+				model.put("error", "File was not uploaded, try again. Check if file type is .pdf!");
+				addCategoriesToModel(model);
+				return "viewBookAddUpload";
+			}
 		} catch (Exception e) {
-			model.addAttribute("message", "FAIL to upload " + file.getOriginalFilename() + "!");
+			model.put("error", "File was not uploaded, try again. Check if file type is .pdf!");
+			addCategoriesToModel(model);
+			return "viewBookAddUpload";
 		}
+		
+		
 		
 		addLanguageToModel(model);
 		addCategoriesToModel(model);
@@ -202,13 +217,36 @@ public class EBookController {
 	}	
 
 	@RequestMapping(value="/bookdownload", method=RequestMethod.GET)
-	public String BookDownload(@RequestParam("bookId") String bookId, ModelMap model) {
-
+	public ResponseEntity<Resource> BookDownload(@RequestParam("bookId") String bookId, ModelMap model) {
 		
-		model.put("selectBy", "All books");
-		addBooksToModel(model);
-		addCategoriesToModel(model);
-		return "viewBooks";
+		int id = Integer.parseInt(bookId);
+		EBookEntity book = eBookService.findEBook(id);
+		
+		if (book == null) {	
+			model.put("download_error", "Selected e-Book was not found");		
+			return new ResponseEntity<Resource>(HttpStatus.NO_CONTENT);
+		}
+		
+		//String downloadFileName = "udzbenik.pdf";
+		//String fileName = "udzbenik.pdf";
+		String downloadFileName = book.getTitle() + " - " + book.getAuthor();
+		String fileName = book.getFilename();
+		
+		Resource res = storageService.loadFile(fileName);
+	    InputStreamResource resource = null;
+	    long contentLength = 0;
+		try {
+			resource = new InputStreamResource(res.getInputStream());
+		    contentLength = res.getFile().length();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	    return ResponseEntity.ok()
+	            .contentLength(contentLength)
+	            .contentType(MediaType.parseMediaType("application/octet-stream"))
+	            .header("Content-disposition", "attachment; filename=" + downloadFileName)
+	            .body(resource);
 	}
 	
 	private void addCategoriesToModel(ModelMap model) {
