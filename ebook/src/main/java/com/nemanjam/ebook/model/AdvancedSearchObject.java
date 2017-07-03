@@ -100,7 +100,20 @@ public class AdvancedSearchObject implements SearchObject {
 	public boolean isAndOperation() {
 		return this.operation.equals("and");
 	}
-
+	
+	
+	@Override
+	public boolean valuesAreEmpty() {
+		if ((title == null || title.equals("")) &&
+				(author == null || author.equals("")) &&
+				(keywords == null || keywords.equals("")) &&
+				(language == null || language.equals("")) &&
+				(content == null || content.equals(""))) {
+			return true;
+		}
+		
+		return false;
+	}
 
 	@Override
 	public boolean isContentCriteria() {

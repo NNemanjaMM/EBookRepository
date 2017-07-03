@@ -3,8 +3,6 @@ package com.nemanjam.ebook.controller;
 import java.util.Collections;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,10 +41,10 @@ public class SessionController {
 		
 		if (users != null && users.size() > 0) {
 			UserEntity user = users.get(0);
-			//if (user.getPassword().equals(password)) {
+			if (user.getPassword().equals(password)) {
 				model.put("sessionUser", user);
 				return "redirect:/";
-			//}
+			}
 		}
 		model.put("error", "Wrong username/password combination");
 
@@ -69,7 +67,7 @@ public class SessionController {
 	}
 	
 	@RequestMapping(value="/accountinfo", method=RequestMethod.POST)
-	public String UserUpdateInfo(@Valid @ModelAttribute("user") UserEntity user, BindingResult result, ModelMap model) {
+	public String UserUpdateInfo(@ModelAttribute("user") UserEntity user, BindingResult result, ModelMap model) {
 
 		UserEntity sessionUser = (UserEntity) model.get("sessionUser");
 		boolean hasUsernameError = false;

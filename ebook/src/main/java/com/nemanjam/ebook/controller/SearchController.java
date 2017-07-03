@@ -51,6 +51,13 @@ public class SearchController {
 
 	@RequestMapping(value="/searchresult", method=RequestMethod.POST)
 	public String SearchBooks(@ModelAttribute("params") SimpleSearchObject params, ModelMap model) {
+		
+		if (params.valuesAreEmpty()) {
+			model.put("error", "There is no serch value entered");
+			addLanguageToModel(model);
+			addCategoriesToModel(model);
+			return "viewSearch";
+		}
 
 		List<EBookDisplay> books = eBookService.getSimpleSearchResults(params);		
 
@@ -62,6 +69,13 @@ public class SearchController {
 	@RequestMapping(value="/searchresultadvanced", method=RequestMethod.POST)
 	public String SearchBooksAdvanced(@ModelAttribute("params") AdvancedSearchObject params, ModelMap model) {
 
+		if (params.valuesAreEmpty()) {
+			model.put("error", "There is no serch value entered");
+			addLanguageToModel(model);
+			addCategoriesToModel(model);
+			return "viewSearchAdvanced";
+		}
+		
 		List<EBookDisplay> books = eBookService.getAdvancedSearchResults(params);		
 
 		model.put("books", books);

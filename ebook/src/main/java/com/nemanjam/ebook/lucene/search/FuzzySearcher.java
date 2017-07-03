@@ -15,8 +15,11 @@ public class FuzzySearcher {
 	}
 
 	public FuzzyQuery getQuery(Term term){
-		if(term == null) return null;		
-		int maxEdits = (int) Math.floor((1 - similarity)*term.field().length());		
+		if(term == null) { 
+			return null;		
+		}
+		int maxEdits = (int) Math.floor((1 - similarity) * term.field().length());		
+		maxEdits = maxEdits > 2 ? 2 : maxEdits;
 		FuzzyQuery query = new FuzzyQuery(term, maxEdits);		
 		return query;
 	}

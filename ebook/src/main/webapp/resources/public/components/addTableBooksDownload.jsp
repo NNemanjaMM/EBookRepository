@@ -33,7 +33,7 @@
 								</a>
 							</c:when>
 							<c:otherwise>
-								Category not available for you
+								Not available category
 							</c:otherwise>
 						</c:choose>
 					</td>

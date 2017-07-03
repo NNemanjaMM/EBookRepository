@@ -22,7 +22,8 @@
 			<tr <c:if test="${sessionUser.type == 'a'}">style="display:none;"</c:if> >
 				<td>Subscribed to:</td>
 				<th>
-					<input type="text" name="category" id="category" tabindex="1" class="form-control" value="${sessionUser.category.name}" readonly="readonly" required="required">
+					<input type="text" class="form-control" value="${sessionUser.category.name}" readonly="readonly" required="required">
+					<input type="text" name="category" id="category" tabindex="1" class="form-control" value="${sessionUser.category.id}" style="display:none;" readonly="readonly" required="required">
 					
 					<input type="text" name="type" id="type" tabindex="1" required="required" value="${sessionUser.type}" readonly="readonly" style="display:none">
 					<input type="password" name="password" id="password" tabindex="1" required="required" value="${sessionUser.password}" readonly="readonly" style="display:none">

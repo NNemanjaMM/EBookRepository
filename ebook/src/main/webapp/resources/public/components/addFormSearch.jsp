@@ -41,7 +41,18 @@
 						<option value="fuzzy">Fuzzy</option>
 					</select>
 				</th>
-			</tr>
+			</tr>		
+			
+			<c:if test="${error != null}">
+				<tr>
+					<td colspan="2" class="error-field" role="alert">
+						<div class="alert alert-danger">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							${error}
+						</div>
+					</td>
+				</tr>
+			</c:if>	
 			
 			<tr><td colspan="2"><hr/></td></tr>		
 			

@@ -138,7 +138,6 @@ public class EBookService {
 	
 	
 	public List<EBookDisplay> getSimpleSearchResults(SimpleSearchObject params) {
-				
 		return simpleSearch(params);
 	}
 	
@@ -152,12 +151,6 @@ public class EBookService {
 		Query query = booleanSearcher.getQuery(clauses);
 		List<RequiredHighlight> requiredHighlights = getRequiredHighlights(params);
 		return getDataWithHighlights(query, requiredHighlights);
-		
-		// TODO highlight
-		
-		//ArrayList<EBookDisplay> books = getBooksFromDocuments(docs);
-		
-		//return books;
 	}
 
 	private List<EBookDisplay> simpleSearch(SimpleSearchObject params) {

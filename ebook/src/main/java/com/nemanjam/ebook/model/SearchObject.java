@@ -6,4 +6,5 @@ public interface SearchObject {
 
 	public String getContentValue();
 	
+	public boolean valuesAreEmpty();
 }

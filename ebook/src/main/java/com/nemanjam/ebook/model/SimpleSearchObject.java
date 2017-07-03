@@ -76,6 +76,14 @@ public class SimpleSearchObject implements SearchObject {
 		return query.equals("fuzzy");	
 	}
 
+	
+	@Override
+	public boolean valuesAreEmpty() {
+		if (getValue() == null || getValue().equals("")) {
+			return true;
+		}
+		return false;
+	}
 
 	@Override
 	public boolean isContentCriteria() {
