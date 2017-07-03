@@ -9,13 +9,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.nemanjam.ebook.entity.SimpleSearchObject;
-import com.nemanjam.ebook.entity.db.CategoryEntity;
-import com.nemanjam.ebook.entity.db.EBookEntity;
-import com.nemanjam.ebook.entity.db.LanguageEntity;
+import com.nemanjam.ebook.model.AdvancedSearchObject;
+import com.nemanjam.ebook.model.SimpleSearchObject;
+import com.nemanjam.ebook.model.entity.CategoryEntity;
+import com.nemanjam.ebook.model.entity.EBookEntity;
+import com.nemanjam.ebook.model.entity.LanguageEntity;
 import com.nemanjam.ebook.service.CategoryService;
 import com.nemanjam.ebook.service.EBookService;
 import com.nemanjam.ebook.service.LanguageService;
@@ -50,20 +50,21 @@ public class SearchController {
 	}
 
 	@RequestMapping(value="/searchresult", method=RequestMethod.POST)
-	public String SearchBooks(@ModelAttribute("book") SimpleSearchObject params, ModelMap model) {
+	public String SearchBooks(@ModelAttribute("params") SimpleSearchObject params, ModelMap model) {
 
 		List<EBookEntity> books = eBookService.getSimpleSearchResults(params);		
-		
-		addCategoriesToModel(model);
+
 		model.put("books", books);
+		addCategoriesToModel(model);
 		return "viewSearchResults";
 	}
 
 	@RequestMapping(value="/searchresultadvanced", method=RequestMethod.POST)
-	public String SearchBooksAdvanced(@RequestParam("") String param, ModelMap model) {
-		// vratiti knjige koje odgovaraju
-		// vratiti parametre pretrage
-		
+	public String SearchBooksAdvanced(@ModelAttribute("params") AdvancedSearchObject params, ModelMap model) {
+
+		List<EBookEntity> books = eBookService.getAdvancedSearchResults(params);		
+
+		model.put("books", books);
 		addCategoriesToModel(model);
 		return "viewSearchResults";
 	}

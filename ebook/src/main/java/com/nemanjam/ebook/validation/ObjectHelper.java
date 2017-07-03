@@ -1,4 +1,4 @@
-package com.nemanjam.ebook.lucene;
+package com.nemanjam.ebook.validation;
 
 import java.util.ArrayList;
 

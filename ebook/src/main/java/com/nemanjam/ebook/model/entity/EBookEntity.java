@@ -1,4 +1,4 @@
-package com.nemanjam.ebook.entity.db;
+package com.nemanjam.ebook.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

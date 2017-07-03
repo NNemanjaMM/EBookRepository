@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nemanjam.ebook.crud.ICategoryCRUD;
-import com.nemanjam.ebook.entity.db.CategoryEntity;
 import com.nemanjam.ebook.exception.ExceptionRemovingObject;
+import com.nemanjam.ebook.model.entity.CategoryEntity;
 
 @Service
 public class CategoryService {

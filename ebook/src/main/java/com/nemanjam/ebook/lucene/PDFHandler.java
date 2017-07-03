@@ -14,9 +14,10 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.util.PDFTextStripper;
 
-import com.nemanjam.ebook.entity.db.EBookEntity;
 import com.nemanjam.ebook.exception.ExceptionIncompleteIndexDocument;
+import com.nemanjam.ebook.model.entity.EBookEntity;
 import com.nemanjam.ebook.service.StorageService;
+import com.nemanjam.ebook.validation.ObjectHelper;
 
 public class PDFHandler {
 

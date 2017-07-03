@@ -13,7 +13,7 @@
 					<select name="criteria" id="criteria" class="form-control mediumInput" required="required">
 						<option value="title">Title</option>
 						<option value="author">Author</option>
-						<option value="keywords">Key words</option>
+						<option value="keywords">Keywords</option>
 						<option value="language">Language</option>
 						<option value="content">Content</option>
 					</select>

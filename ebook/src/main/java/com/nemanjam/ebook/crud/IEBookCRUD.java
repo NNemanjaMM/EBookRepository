@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.nemanjam.ebook.entity.db.EBookEntity;
+import com.nemanjam.ebook.model.entity.EBookEntity;
 
 public interface IEBookCRUD extends CrudRepository<EBookEntity, Integer> {
 

@@ -1,8 +1,8 @@
-package com.nemanjam.ebook.entity;
+package com.nemanjam.ebook.model;
 
-import com.nemanjam.ebook.entity.db.CategoryEntity;
-import com.nemanjam.ebook.entity.db.EBookEntity;
-import com.nemanjam.ebook.entity.db.LanguageEntity;
+import com.nemanjam.ebook.model.entity.CategoryEntity;
+import com.nemanjam.ebook.model.entity.EBookEntity;
+import com.nemanjam.ebook.model.entity.LanguageEntity;
 
 public class EBookDisplay {
 

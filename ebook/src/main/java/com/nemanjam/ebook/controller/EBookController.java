@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.nemanjam.ebook.entity.EBookDisplay;
-import com.nemanjam.ebook.entity.db.CategoryEntity;
-import com.nemanjam.ebook.entity.db.EBookEntity;
-import com.nemanjam.ebook.entity.db.LanguageEntity;
+import com.nemanjam.ebook.model.EBookDisplay;
+import com.nemanjam.ebook.model.entity.CategoryEntity;
+import com.nemanjam.ebook.model.entity.EBookEntity;
+import com.nemanjam.ebook.model.entity.LanguageEntity;
 import com.nemanjam.ebook.service.CategoryService;
 import com.nemanjam.ebook.service.EBookService;
 import com.nemanjam.ebook.service.LanguageService;

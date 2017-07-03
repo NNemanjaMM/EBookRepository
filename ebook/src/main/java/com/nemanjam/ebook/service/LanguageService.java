@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nemanjam.ebook.crud.ILanguageCRUD;
-import com.nemanjam.ebook.entity.db.LanguageEntity;
+import com.nemanjam.ebook.model.entity.LanguageEntity;
 
 @Service
 public class LanguageService {

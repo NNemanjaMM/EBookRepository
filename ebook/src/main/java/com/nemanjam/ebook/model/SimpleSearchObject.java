@@ -1,4 +1,4 @@
-package com.nemanjam.ebook.entity;
+package com.nemanjam.ebook.model;
 
 
 public class SimpleSearchObject {

@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.nemanjam.ebook.entity.db.CategoryEntity;
-import com.nemanjam.ebook.entity.db.UserEntity;
+import com.nemanjam.ebook.model.entity.CategoryEntity;
+import com.nemanjam.ebook.model.entity.UserEntity;
 import com.nemanjam.ebook.service.CategoryService;
 import com.nemanjam.ebook.service.UserService;
 
