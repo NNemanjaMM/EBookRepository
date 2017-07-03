@@ -10,7 +10,7 @@ import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.Version;
 
-public class AnalyzedSearcher{
+public class AnalyzedSearcher {
 	protected static final Version v = Version.LUCENE_4_9;
 	protected Analyzer analyzer;
 	
@@ -18,12 +18,12 @@ public class AnalyzedSearcher{
 		this.analyzer = analyzer;
 	}
 	
-	public List<Document> search(Term term) {
+	public Query getQuery(Term term) {
 		QueryParser qp = new QueryParser(v, term.field(), analyzer);
 		Query query;
 		try {
 			query = qp.parse(term.text());
-			return ResultRetriever.getResults(query);
+			return query;
 		} catch (ParseException e) {
 			throw new IllegalArgumentException("Prosledjeni term nije u redu");
 		}

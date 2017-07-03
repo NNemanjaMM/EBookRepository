@@ -1,7 +1,7 @@
 package com.nemanjam.ebook.model;
 
 
-public class SimpleSearchObject {
+public class SimpleSearchObject implements SearchObject {
 
 	private String criteria;
 	private String textvalue;
@@ -74,6 +74,17 @@ public class SimpleSearchObject {
 	
 	public boolean isFuzzyQuery() {
 		return query.equals("fuzzy");	
+	}
+
+
+	@Override
+	public boolean isContentCriteria() {
+		return criteria.equals("content");
+	}
+	
+	@Override
+	public String getContentValue() {
+		return textvalue;
 	}
 	
 }

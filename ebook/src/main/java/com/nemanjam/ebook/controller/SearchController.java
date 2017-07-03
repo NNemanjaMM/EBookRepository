@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.nemanjam.ebook.model.AdvancedSearchObject;
+import com.nemanjam.ebook.model.EBookDisplay;
 import com.nemanjam.ebook.model.SimpleSearchObject;
 import com.nemanjam.ebook.model.entity.CategoryEntity;
-import com.nemanjam.ebook.model.entity.EBookEntity;
 import com.nemanjam.ebook.model.entity.LanguageEntity;
 import com.nemanjam.ebook.service.CategoryService;
 import com.nemanjam.ebook.service.EBookService;
@@ -52,7 +52,7 @@ public class SearchController {
 	@RequestMapping(value="/searchresult", method=RequestMethod.POST)
 	public String SearchBooks(@ModelAttribute("params") SimpleSearchObject params, ModelMap model) {
 
-		List<EBookEntity> books = eBookService.getSimpleSearchResults(params);		
+		List<EBookDisplay> books = eBookService.getSimpleSearchResults(params);		
 
 		model.put("books", books);
 		addCategoriesToModel(model);
@@ -62,7 +62,7 @@ public class SearchController {
 	@RequestMapping(value="/searchresultadvanced", method=RequestMethod.POST)
 	public String SearchBooksAdvanced(@ModelAttribute("params") AdvancedSearchObject params, ModelMap model) {
 
-		List<EBookEntity> books = eBookService.getAdvancedSearchResults(params);		
+		List<EBookDisplay> books = eBookService.getAdvancedSearchResults(params);		
 
 		model.put("books", books);
 		addCategoriesToModel(model);

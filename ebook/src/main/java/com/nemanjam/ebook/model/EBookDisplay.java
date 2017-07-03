@@ -17,6 +17,10 @@ public class EBookDisplay {
 	private LanguageEntity language;	
 	
 	private String summary;
+	
+	public EBookDisplay() {
+		
+	}
 
 	public EBookDisplay(EBookEntity eBook, String summary) {
 		this.id = eBook.getId();

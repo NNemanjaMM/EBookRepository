@@ -232,8 +232,6 @@ public class EBookController {
 			return new ResponseEntity<Resource>(HttpStatus.NO_CONTENT);
 		}
 		
-		//String downloadFileName = "udzbenik.pdf";
-		//String fileName = "udzbenik.pdf";
 		String downloadFileName = book.getTitle() + " (" + book.getAuthor() + ").pdf";
 		String fileName = book.getFilename();
 		
@@ -267,7 +265,7 @@ public class EBookController {
 	}
 	
 	private void addBooksToModelDisplay(ModelMap model, List<EBookEntity> list) {
-		/*List<EBookDisplay> books = new ArrayList<EBookDisplay>();
+		List<EBookDisplay> books = new ArrayList<EBookDisplay>();
 		
 		for (EBookEntity eBook : list) {
 			EBookDisplay book = new EBookDisplay(eBook, "");
@@ -276,10 +274,6 @@ public class EBookController {
 		
 		Collections.sort(books, (EBookDisplay b1, EBookDisplay b2) -> b1.getTitle().compareTo(b2.getTitle()));
 		model.put("books", books);	
-		*/		
-		
-		
-		model.put("books", list);	
 	}
 	
 	private void addBooksToModel(ModelMap model) {

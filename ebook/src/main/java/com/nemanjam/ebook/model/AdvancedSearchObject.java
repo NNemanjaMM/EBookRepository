@@ -1,6 +1,6 @@
 package com.nemanjam.ebook.model;
 
-public class AdvancedSearchObject {
+public class AdvancedSearchObject implements SearchObject {
 
 	private String title;
 	private String author;	
@@ -99,6 +99,17 @@ public class AdvancedSearchObject {
 	
 	public boolean isAndOperation() {
 		return this.operation.equals("and");
+	}
+
+
+	@Override
+	public boolean isContentCriteria() {
+		return this.content != null && !this.content.equals("");
+	}
+	
+	@Override
+	public String getContentValue() {
+		return this.content;
 	}
 	
 }

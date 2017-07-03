@@ -26,6 +26,9 @@
 					</td>
 				</tr>
 				<tr>
+		 			<td>
+		 				${book.summary}
+		 			</td>
 				</tr>	
 				<tr><td>&nbsp;</td></tr>
 			</c:forEach>
