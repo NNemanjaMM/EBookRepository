@@ -16,12 +16,17 @@
 		
 			<div class="content">
     			<div class="center-content">
-					
-					<jsp:include page="components/addFormSearch.jsp" />
-					
-					<jsp:include page="components/addTableBooksDownload.jsp" />
-					
-					<jsp:include page="components/addTableBooksPreview.jsp" />
+    						
+    				<h2>Search results:</h2>
+    								
+					<c:choose>
+						<c:when test="${sessionUser != null}">
+							<jsp:include page="components/addTableBooksDownload.jsp" />
+						</c:when>
+						<c:otherwise>
+							<jsp:include page="components/addTableBooksPreview.jsp" />
+						</c:otherwise>
+					</c:choose>
 					
         		</div>
 			</div>		

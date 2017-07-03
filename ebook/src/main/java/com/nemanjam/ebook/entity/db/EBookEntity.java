@@ -1,4 +1,4 @@
-package com.nemanjam.ebook.entity;
+package com.nemanjam.ebook.entity.db;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,11 +22,11 @@ public class EBookEntity {
 	private String title;
 
 	@Column(nullable = true)
-	@Size(max = 120, min = 1, message = "If typed, book's author must contain between 1 and 120 characters!")
+	@Size(max = 120, min = 0, message = "If typed, book's author must contain between 1 and 120 characters!")
 	private String author;
 
 	@Column(nullable = true)
-	@Size(max = 120, min = 1, message = "If typed, book's keywords must contain between 1 and 120 characters!")
+	@Size(max = 120, min = 0, message = "If typed, book's keywords must contain between 1 and 120 characters!")
 	private String keywords;
 
 	@Column(nullable = true)
@@ -37,7 +37,7 @@ public class EBookEntity {
 	private String filename;
 
 	@Column(nullable = true)
-	@Size(max = 100, min = 1, message = "Book's MIME must contain between 1 and 100 characters!")
+	@Size(max = 100, min = 0, message = "Book's MIME must contain between 1 and 100 characters!")
 	private String MIME;
 
 	

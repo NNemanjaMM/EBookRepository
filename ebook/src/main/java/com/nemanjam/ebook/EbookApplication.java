@@ -27,8 +27,8 @@ public class EbookApplication extends SpringBootServletInitializer implements Co
 	
 	@Override
 	public void run(String... args) throws Exception {
- 		storageService.deleteAll();
- 		storageService.init();
+ 		//storageService.deleteAll();
+ 		//storageService.init();
  	}
 	
 }

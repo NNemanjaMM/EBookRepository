@@ -32,6 +32,10 @@ h2 {
 	margin-bottom: 1.5em;
 }
 
+h3 {
+	margin-top: 5em !important;
+}
+
 a:hover {
 	text-decoration: none !important;
 }
@@ -224,6 +228,7 @@ FLOAT PANEL HOLDERS
 }
 
 .content {
+	min-height: 30em;
 	width:59em; 
 	float:left; 
 	overflow:hidden; 

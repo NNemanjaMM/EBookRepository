@@ -1,5 +1,9 @@
 package com.nemanjam.ebook.entity;
 
+import com.nemanjam.ebook.entity.db.CategoryEntity;
+import com.nemanjam.ebook.entity.db.EBookEntity;
+import com.nemanjam.ebook.entity.db.LanguageEntity;
+
 public class EBookDisplay {
 
 	private Integer id;

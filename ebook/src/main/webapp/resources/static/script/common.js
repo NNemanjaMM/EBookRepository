@@ -26,11 +26,21 @@ $(document).ready(function() {
 	}
     
     $('.select-user-type').on('change', function() {
-    	  if (this.value == 'a') {
-    		  $('.select-user-category').val("8888");
-    		  $('.select-user-category').prop('disabled', true);
-    	  } else {
-    		  $('.select-user-category').prop('disabled', false);
-    	  }
-    })
+    	if (this.value == 'a') {
+    		$('.select-user-category').val("8888");
+    		$('.select-user-category').prop('disabled', true);
+    	} else {
+    		$('.select-user-category').prop('disabled', false);
+    	}
+    });
+    
+    $('#criteria').on('change', function() {	 
+    	if (this.value == 'language') {
+    		$('#textvalue').hide();
+    		$('#languagevalue').show();
+		} else {
+			$('#textvalue').show();
+			$('#languagevalue').hide();
+		}
+    });
 })

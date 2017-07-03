@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.nemanjam.ebook.entity.UserEntity;
+import com.nemanjam.ebook.entity.db.UserEntity;
 
 public class SessionInterceptorSubscriber extends HandlerInterceptorAdapter {
 

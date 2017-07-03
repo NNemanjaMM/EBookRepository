@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.nemanjam.ebook.entity.UserEntity;
+import com.nemanjam.ebook.entity.db.UserEntity;
 
 public interface IUserCRUD extends CrudRepository<UserEntity, Integer> {
 

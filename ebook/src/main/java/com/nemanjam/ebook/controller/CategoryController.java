@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.nemanjam.ebook.entity.CategoryEntity;
+import com.nemanjam.ebook.entity.db.CategoryEntity;
 import com.nemanjam.ebook.exception.ExceptionRemovingObject;
 import com.nemanjam.ebook.service.CategoryService;
 

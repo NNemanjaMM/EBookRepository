@@ -1,5 +1,6 @@
 package com.nemanjam.ebook.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -12,10 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.nemanjam.ebook.lucene.UDDIndexer;
+
 @Service
 public class StorageService {
 	
-	private final Path rootLocation = Paths.get("storage");
+	public static final Path rootLocation = Paths.get("storage/books");
  
 	public String store(MultipartFile file){
 		String fileName = null;
@@ -24,13 +27,13 @@ public class StorageService {
 			if(!fileName.endsWith(".pdf")) {
 				return fileName;
 			}
-			Path filePath = this.rootLocation.resolve(fileName);
+			Path filePath = rootLocation.resolve(fileName);
             Resource resource = new UrlResource(filePath.toUri());
             if(resource.exists()) {
             	fileName = fileName.substring(0, fileName.length() - 4);
 				fileName = fileName + "_"  + System.currentTimeMillis() + ".pdf";
             }
-            Files.copy(file.getInputStream(), this.rootLocation.resolve(fileName));
+            Files.copy(file.getInputStream(), rootLocation.resolve(fileName));
         } catch (Exception e) {
         	throw new RuntimeException();
         }
@@ -51,16 +54,47 @@ public class StorageService {
         }
     }
     
+    public String getFilePath(String fileName) {
+    	return rootLocation.resolve(fileName).toString();
+    }
+    
+    public void deleteFile(String filename) {
+        try {
+            Path file = rootLocation.resolve(filename);
+            Resource resource = new UrlResource(file.toUri());
+            if(resource.exists()) {
+                FileSystemUtils.deleteRecursively(resource.getFile());
+            } else {
+            	throw new RuntimeException();
+            }
+        } catch (IOException e) {
+        	throw new RuntimeException();
+        }
+    }
+    
     public void deleteAll() {
         FileSystemUtils.deleteRecursively(rootLocation.toFile());
+        FileSystemUtils.deleteRecursively(UDDIndexer.rootLocation.toFile());
     }
  
     public void init() {
         try {
             Files.createDirectory(rootLocation);
+            Files.createDirectory(UDDIndexer.rootLocation);
         } catch (IOException e) {
             throw new RuntimeException("Could not initialize storage!");
         }
     }
 
+    public File multipartToFile(MultipartFile multipart) {
+		Path filePath = rootLocation.resolve(multipart.getOriginalFilename());
+        File convFile = new File(filePath.toString());
+        try {
+			multipart.transferTo(convFile);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+        return convFile;
+    }
+    
 }

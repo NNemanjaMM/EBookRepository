@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nemanjam.ebook.crud.IUserCRUD;
-import com.nemanjam.ebook.entity.UserEntity;
+import com.nemanjam.ebook.entity.db.UserEntity;
 
 @Service
 public class UserService {

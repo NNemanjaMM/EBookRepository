@@ -10,31 +10,31 @@
 			<tr>
 				<td>Title:</td>
 				<th colspan="2">
-					<input type="text" maxlength="80" name="title" id="title" class="form-control veryBigInput" Placeholder="Enter book title" required="required">
+					<input type="text" maxlength="80" name="title" id="title" value="${book.title}" class="form-control veryBigInput" Placeholder="Enter book title" required="required">
 				</th>
 			</tr>
 			<tr>
 				<td>Author:</td>
 				<th colspan="2">
-					<input type="text" maxlength="120" name="author" id="author" class="form-control veryBigInput" Placeholder="Enter book author">
+					<input type="text" maxlength="120" name="author" id="author" value="${book.author}" class="form-control veryBigInput" Placeholder="Enter book author">
 				</th>
 			</tr>
 			<tr>
 				<td>Publication year:</td>
 				<th colspan="2">
-					<input type="number" name="publicationYear" id="publicationYear" min="1" max="2017" class="form-control smallInput">
+					<input type="number" name="publicationYear" id="publicationYear" value="${book.publicationYear}" min="1" max="2017" class="form-control smallInput">
 				</th>
 			</tr>
 			<tr>
 				<td>Keywords:</td>
 				<th colspan="2">
-					<input type="text" maxlength="120" name="keywords" id="keywords" class="form-control veryBigInput" Placeholder="List book keywords">
+					<input type="text" maxlength="120" name="keywords" id="keywords" value="${book.keywords}" class="form-control veryBigInput" Placeholder="List book keywords">
 				</th>
 			</tr>
 			<tr>
 				<td>MIME:</td>
 				<th colspan="2">
-					<input type="text" maxlength="100" name="MIME" id="MIME" class="form-control veryBigInput" Placeholder="Enter book MIME">
+					<input type="text" maxlength="100" name="MIME" id="MIME" value="${book.MIME}" class="form-control veryBigInput" Placeholder="Enter book MIME">
 				</th>
 			</tr>
 			<tr>
@@ -42,10 +42,7 @@
 				<th colspan="2">
 					<select name="language" id="language" class="form-control mediumInput" required="required">
 						<c:forEach items="${languages}" var="lang">
-							<option 
-								<c:if test="${lang.id == book.languange.id}">
-									selected
-								</c:if> value="${lang.id}">
+							<option value="${lang.id}">
 								${lang.name}
 							</option>
 						</c:forEach>
@@ -65,7 +62,7 @@
 			<tr>
 				<td>e-Book File:</td>
 				<th>
-					<input type="text" maxlength="200" readonly="readonly" name="filename" id="filename" class="form-control veryBigInput" required="required">
+					<input type="text" maxlength="200" readonly="readonly" name="filename" value="${book.filename}" id="filename" class="form-control veryBigInput" required="required">
 				</th>
 			</tr>			
 			

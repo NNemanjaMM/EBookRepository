@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.nemanjam.ebook.entity.CategoryEntity;
 import com.nemanjam.ebook.entity.EBookDisplay;
-import com.nemanjam.ebook.entity.EBookEntity;
-import com.nemanjam.ebook.entity.LanguageEntity;
+import com.nemanjam.ebook.entity.db.CategoryEntity;
+import com.nemanjam.ebook.entity.db.EBookEntity;
+import com.nemanjam.ebook.entity.db.LanguageEntity;
 import com.nemanjam.ebook.service.CategoryService;
 import com.nemanjam.ebook.service.EBookService;
 import com.nemanjam.ebook.service.LanguageService;
@@ -141,7 +141,8 @@ public class EBookController {
 			return "viewBookAddUpload";
 		}
 		
-		
+		EBookEntity ebook = eBookService.getFileInfo(savedFileName);
+		model.put("book", ebook);
 		
 		addLanguageToModel(model);
 		addCategoriesToModel(model);
@@ -165,8 +166,10 @@ public class EBookController {
 
 			addCategoriesToModel(model);
 			addLanguageToModel(model);
-			return "viewBookAdd";			
+			return "viewBookAddInfo";
 		}
+		
+		
 
 		model.put("selectBy", "All books");		
 		eBookService.addEBook(book);
@@ -208,7 +211,9 @@ public class EBookController {
 		// REQUIRES PERMISSION
 
 		int id = Integer.parseInt(bookId);
-		eBookService.deleteEBook(id);		
+		EBookEntity book = eBookService.findEBook(id);
+		eBookService.deleteEBook(id);	
+		storageService.deleteFile(book.getFilename());
 
 		List<EBookEntity> books = eBookService.getAllEBooks();
 		addBooksToModelDisplay(model, books);
@@ -229,7 +234,7 @@ public class EBookController {
 		
 		//String downloadFileName = "udzbenik.pdf";
 		//String fileName = "udzbenik.pdf";
-		String downloadFileName = book.getTitle() + " - " + book.getAuthor();
+		String downloadFileName = book.getTitle() + " (" + book.getAuthor() + ").pdf";
 		String fileName = book.getFilename();
 		
 		Resource res = storageService.loadFile(fileName);
@@ -262,15 +267,19 @@ public class EBookController {
 	}
 	
 	private void addBooksToModelDisplay(ModelMap model, List<EBookEntity> list) {
-		List<EBookDisplay> books = new ArrayList<EBookDisplay>();
+		/*List<EBookDisplay> books = new ArrayList<EBookDisplay>();
 		
 		for (EBookEntity eBook : list) {
 			EBookDisplay book = new EBookDisplay(eBook, "");
 			books.add(book);
-		}		
+		}
 		
 		Collections.sort(books, (EBookDisplay b1, EBookDisplay b2) -> b1.getTitle().compareTo(b2.getTitle()));
 		model.put("books", books);	
+		*/		
+		
+		
+		model.put("books", list);	
 	}
 	
 	private void addBooksToModel(ModelMap model) {
