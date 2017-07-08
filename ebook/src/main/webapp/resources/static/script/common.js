@@ -1,46 +1,21 @@
-function clearInputs(button) {
-	var inputs = $(button).parents("form").find('input');
-	$(inputs).each(function(index) {
-		if ($(this).attr("type") != "button" && $(this).attr("type") != "submit" && $(this).attr("name") != "user")
-			$(this).val("");
-	});
-	var inputs = $(button).parents("form").find('select');
-	$(inputs).each(function(index) {
-		$(this).val("");
-	});
-	var inputs = $(button).parents("form").find('textarea');
-	$(inputs).each(function(index) {
-		$(this).val("");
-	});
-}
-
-$(document).ready(function() {
-
-    $('.dropdown-toggle').dropdown();
+$(function() {
     
-	if ($('.select-user-type').val() == 'a') {
-		$('.select-user-category').val("8888");
-		$('.select-user-category').prop('disabled', true);
-	} else {
-		$('.select-user-category').prop('disabled', false);
-	}
-    
-    $('.select-user-type').on('change', function() {
-    	if (this.value == 'a') {
-    		$('.select-user-category').val("8888");
-    		$('.select-user-category').prop('disabled', true);
-    	} else {
-    		$('.select-user-category').prop('disabled', false);
-    	}
+    $('#name-search-link').click(function(e) {
+        $(".name-form").delay(100).fadeIn(100);
+        $(".map-form").fadeOut(100);
+        $('#map-search-link').removeClass('active');
+        $('#type').val('place');
+        $(this).addClass('active');
+        e.preventDefault();
     });
     
-    $('#criteria').on('change', function() {	 
-    	if (this.value == 'language') {
-    		$('#textvalue').hide();
-    		$('#languagevalue').show();
-		} else {
-			$('#textvalue').show();
-			$('#languagevalue').hide();
-		}
+    $('#map-search-link').click(function(e) {
+        $(".map-form").delay(100).fadeIn(100);
+        $(".name-form").fadeOut(100);
+        $('#name-search-link').removeClass('active');
+        $('#type').val('map');
+        $(this).addClass('active');
+        e.preventDefault();
     });
-})
+    
+});

@@ -19,12 +19,12 @@ import org.apache.lucene.util.Version;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nemanjam.ebook.lucene.analyze.SerbianAnalyzer;
-import com.nemanjam.ebook.service.EBookService;
+import com.nemanjam.ebook.service.GeoBookService;
 
 public final class UDDIndexer {
 	
 	@Autowired
-	private EBookService ebookService;
+	private GeoBookService geoBookService;
 	
 	private static final Version matchVersion = Version.LUCENE_4_9;
 	public static final Path rootLocation = Paths.get("storage/indexes");

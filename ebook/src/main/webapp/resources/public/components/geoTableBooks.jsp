@@ -21,35 +21,23 @@
 			
 				<tr>
 					<th class="info">
-						${book.title}, 
-						<i>${book.author}</i>, 
-						${book.publicationYear}
+						${book.title}
 					</th>
-					<td rowspan="3" class="add">
-						<c:choose>
-							<c:when test="${sessionUser.category == null || sessionUser.category.id == book.category.id}">
-								<a href="/bookdownload?bookId=${book.id}">
-									<button class="btn btn-default">Download</button>
-								</a>
-							</c:when>
-							<c:otherwise>
-								Not available category
-							</c:otherwise>
-						</c:choose>
+					<td rowspan="2" class="add">
+						<a href="/bookdownload?bookId=${book.id}">
+							<button class="btn btn-default">Download</button>
+						</a>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<i>Category: ${book.category.name}; 
-						Language: ${book.language.name}; 
-						Tags: ${book.keywords}</i>
+						<i>Book locations: 
+							<c:forEach items="${book.locations}" var="loc">
+								(${loc.latitude}, ${loc.longitude}) 
+							</c:forEach>
+						</i>
 					</td>
 				</tr>
-				<tr>
-		 			<td>
-		 				${book.summary}
-		 			</td>
-				</tr>	
 				<tr><td>&nbsp;</td></tr>
 			</c:forEach>
 		</c:when>

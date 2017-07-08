@@ -1,4 +1,3 @@
-DROP TABLE ebook;
-DROP TABLE user;
-DROP TABLE category;
-DROP TABLE language;
+DROP TABLE geo_book_locations;
+DROP TABLE geo_location;
+DROP TABLE geo_book;

@@ -17,7 +17,7 @@
 			<div class="content">
     			<div class="center-content">
 					
-					<jsp:include page="components/addFormCategoryAdd.jsp" />
+					<jsp:include page="components/geoFormSearch.jsp" />
 					
         		</div>
 			</div>		

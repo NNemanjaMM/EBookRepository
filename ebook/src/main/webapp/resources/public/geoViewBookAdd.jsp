@@ -17,7 +17,7 @@
 			<div class="content">
     			<div class="center-content">
 					
-					<jsp:include page="components/addFormBookUpdate.jsp" />
+					<jsp:include page="components/geoFormBookAdd.jsp" />
 					
         		</div>
 			</div>		

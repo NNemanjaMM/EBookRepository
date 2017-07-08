@@ -15,13 +15,13 @@ import org.apache.pdfbox.pdmodel.PDDocumentInformation;
 import org.apache.pdfbox.util.PDFTextStripper;
 
 import com.nemanjam.ebook.exception.ExceptionIncompleteIndexDocument;
-import com.nemanjam.ebook.model.entity.EBookEntity;
+import com.nemanjam.ebook.model.entity.GeoBook;
 import com.nemanjam.ebook.service.StorageService;
 import com.nemanjam.ebook.validation.ObjectHelper;
 
 public class PDFHandler {
 
-	public Document getDocument(EBookEntity bookMetaData) throws ExceptionIncompleteIndexDocument {
+	public Document getDocument(GeoBook bookMetaData) throws ExceptionIncompleteIndexDocument {
 		String filePath = StorageService.rootLocation.resolve(bookMetaData.getFilename()).toString();
 		File file = new File(filePath);
 		Document doc = new Document();
@@ -42,7 +42,8 @@ public class PDFHandler {
 		return doc;
 	}
 
-	private void addDocMetaData(EBookEntity bookMetaData, Document doc) {
+	private void addDocMetaData(GeoBook bookMetaData, Document doc) {
+		/*
 		String author = bookMetaData.getAuthor();
 		String keywords = bookMetaData.getKeywords();
 
@@ -74,6 +75,7 @@ public class PDFHandler {
 				}
 			}
 		}
+		*/
 	}
 
 	private String addDocContent(File file, Document doc) {
@@ -105,10 +107,11 @@ public class PDFHandler {
 	}
 	
 
-	public EBookEntity getEBookFromPDF(File file) throws ExceptionIncompleteIndexDocument {
-		EBookEntity eBook = new EBookEntity();
+	public GeoBook getEBookFromPDF(File file) throws ExceptionIncompleteIndexDocument {
+		GeoBook geoBook = new GeoBook();
 		String fileName = file.getName();
-		
+
+		/*
 		eBook.setFilename(fileName);
 		String error = "";
 		try {
@@ -170,7 +173,7 @@ public class PDFHandler {
 		if(!error.equals("")) {
 			throw new ExceptionIncompleteIndexDocument(error.trim() + " -> " + file.getName());
 		}
-		
-		return eBook;
+		*/
+		return geoBook;
 	}
 }

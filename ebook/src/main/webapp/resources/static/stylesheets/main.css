@@ -40,10 +40,56 @@ a:hover {
 	text-decoration: none !important;
 }
 
+a:focus {
+	text-decoration: none !important;
+}
+
 .error-field-top div {
 	margin-top: 0em !important;
 	margin-bottom: 1em !important;
 }
+
+/*-------------------------------------------------
+GEO SEARCH CLASSES
+-------------------------------------------------*/
+.pick-panel {
+	width: 40em;
+	text-align: center;
+}
+
+.pick-type-row {
+	text-align: center;
+}
+
+.pick-type-link {
+	margin-left: 3em;
+	margin-right: 3em;
+	color: #28C8A0;
+}
+
+.active {
+    font-size: 18px;
+    font-weight: bold;	
+	color: #28C8A0;
+}
+
+.active:focus {
+	color: #28C8A0;
+}
+
+#map {
+	height: 30em;
+	width: 40em;
+}
+
+#spread {
+	padding-left: 4em !important;
+}
+
+.empty-row {
+	height: 1em !important;	
+}
+
 /*-------------------------------------------------
 HEADER CLASSES
 -------------------------------------------------*/

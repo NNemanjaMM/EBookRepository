@@ -17,16 +17,9 @@
 			<div class="content">
     			<div class="center-content">
 					
-					<h2>${selectBy}</h2>
+					<h2>Books to display</h2>
 						
-					<c:choose>
-						<c:when test="${sessionUser != null}">
-							<jsp:include page="components/addTableBooksDownload.jsp" />
-						</c:when>
-						<c:otherwise>
-							<jsp:include page="components/addTableBooksPreview.jsp" />
-						</c:otherwise>
-					</c:choose>
+					<jsp:include page="components/geoTableBooks.jsp" />
 					
         		</div>
 			</div>		
