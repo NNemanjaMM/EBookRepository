@@ -8,6 +8,5 @@
 <link rel="shortcut icon" type="image/png" href="resources/static/images/icon.ico"></link>
 <link rel="shortcut icon" href="resources/static/images/icon.ico" type="image/x-icon" />
 <script type="text/javascript" src="resources/static/script/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="resources/static/script/common.js"></script>
 <script type="text/javascript" src="resources/static/script/bootstrap-dropdown.js"></script>
 

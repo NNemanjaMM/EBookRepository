@@ -1,6 +1,7 @@
 package com.nemanjam.ebook.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.nemanjam.ebook.model.Marker;
 import com.nemanjam.ebook.model.entity.GeoBook;
+import com.nemanjam.ebook.model.entity.GeoLocation;
 import com.nemanjam.ebook.service.GeoBookService;
 import com.nemanjam.ebook.service.StorageService;
 
@@ -29,62 +32,70 @@ public class GeoController {
 	
 	@Autowired
 	private GeoBookService geoBookService;
-
+	
+	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String OpenAllGeoBook(ModelMap model) {
 		addGeoBooksToModel(model);
 		return "geoViewBooks";
 	}
-
+	
 	@RequestMapping(value="/geobooksearch", method=RequestMethod.GET)
-	public String OpenSearchGeoBook(ModelMap model) {
-
+	public String OpenSearchGeoBook() {
 		return "geoViewSearch";
 	}
-
+	
 	@RequestMapping(value="/geobookadd", method=RequestMethod.GET)
-	public String OpenAddGeoBook(ModelMap model) {
-
-		return "geoViewBookAdd";
+	public String OpenAddGeoBook() {
+		return "geoViewBookUpload";
 	}
+		
 
 	@RequestMapping(value="/dogeobooksearch", method=RequestMethod.POST)
-	public String DoSearchGeoBook(@RequestParam("type") String type, @RequestParam("place") String place,
-			@RequestParam("latval") String latitude, @RequestParam("lonval") String longitude, ModelMap model) {
+	public String DoSearchGeoBook(@RequestParam("latval") String latitude, @RequestParam("lonval") String longitude, ModelMap model) {
 
-		if (type.equals("map")) {
-			System.out.println("param mapa: " + latitude + " " + longitude);
-		} else {
-			System.out.println("param mesto: " + place);
-		}
+		double lat = Double.parseDouble(latitude);
+		double lon = Double.parseDouble(longitude);			
+		GeoLocation location = new GeoLocation(lat, lon);
 		
-		return "geoViewSearch";
+		List<GeoBook> geoBooks = geoBookService.searchForBooks(location);
+		
+		addMarkersToModel(model, geoBooks);
+		model.put("books", geoBooks);	
+		return "geoViewBooks";
 	}
 
-	@RequestMapping(value="/dogeobookadd", method=RequestMethod.POST)
-	public String DoAddGeoBook(@RequestParam("file") MultipartFile file, ModelMap model) {
+	@RequestMapping(value="/dogeobookupload", method=RequestMethod.POST)
+	public String DoUploadGeoBook(@RequestParam("file") MultipartFile file, ModelMap model) {
 
 		String savedFileName = null;
 		try {
 			savedFileName = storageService.store(file);		
 			if (savedFileName == null) {
 				model.put("error", "File was not uploaded, try again. Check if file type is .pdf, and check longitude and latitude values!");
-				return "geoViewBookAdd";
+				return "geoViewBookUpload";
 			}
 		} catch (Exception e) {
 			model.put("error", "File was not uploaded, try again. Check if file type is .pdf, and check longitude and latitude values!");
-			return "geoViewBookAdd";
+			return "geoViewBookUpload";
 		}
 
+		GeoBook geoBook = geoBookService.getBookInfo(savedFileName);
+		model.put("book", geoBook);
+		return "geoViewBookAdd";
+	}
+
+	@RequestMapping(value="/dogeobookadd", method=RequestMethod.POST)
+	public String DoAddGeoBook(@RequestParam("title") String title, @RequestParam("fileName") String file, 
+			@RequestParam("locations") List<GeoLocation> locations, ModelMap model) {
+
+		GeoBook book = new GeoBook(title, file, locations);		
+		geoBookService.addGeoBook(book);
+		
 		addGeoBooksToModel(model);
 		return "geoViewBooks";
 	}
 	
-	private void addGeoBooksToModel(ModelMap model) {
-		List<GeoBook> books = geoBookService.getAllGeoBooks();
-		Collections.sort(books, (GeoBook b1, GeoBook b2) -> b1.getTitle().compareTo(b2.getTitle()));
-		model.put("books", books);	
-	}	
 
 	@RequestMapping(value="/bookdownload", method=RequestMethod.GET)
 	public ResponseEntity<Resource> BookDownload(@RequestParam("bookId") String bookId, ModelMap model) {
@@ -115,6 +126,26 @@ public class GeoController {
 	            .contentType(MediaType.parseMediaType("application/octet-stream"))
 	            .header("Content-disposition", "attachment; filename=" + downloadFileName)
 	            .body(resource);
+	}
+	
+	
+	private void addGeoBooksToModel(ModelMap model) {
+		List<GeoBook> books = geoBookService.getAllGeoBooks();
+		Collections.sort(books, (GeoBook b1, GeoBook b2) -> b1.getTitle().compareTo(b2.getTitle()));
+		addMarkersToModel(model, books);
+		model.put("books", books);	
+	}
+	
+	private void addMarkersToModel(ModelMap model, List<GeoBook> books) {
+		List<Marker> markers = new ArrayList<Marker>();
+		if (books != null) {
+			for (GeoBook geoBook : books) {
+				for (GeoLocation location : geoBook.getLocations()) {
+					markers.add(new Marker(geoBook.getTitle(), location.getLatitude(), location.getLongitude()));
+				}
+			}
+		}
+		model.put("markers", markers);	
 	}
 
 }

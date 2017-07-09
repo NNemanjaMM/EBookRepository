@@ -31,6 +31,13 @@ public class GeoBook {
 		super();
 	}
 
+	public GeoBook(String title, String filename, List<GeoLocation> locations) {
+		super();
+		this.title = title;
+		this.filename = filename;
+		this.locations = locations;
+	}
+
 	public GeoBook(Integer id, String title, String filename,
 			List<GeoLocation> locations) {
 		super();

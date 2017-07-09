@@ -34,4 +34,20 @@ public class GeoBookService {
 		
 		return geoBooks;
 	}
+
+	public GeoBook getBookInfo(String fileName) {
+		
+		return null;
+	}
+
+	public void addGeoBook(GeoBook book) {
+		
+	}
+
+	public List<GeoBook> searchForBooks(GeoLocation location) {
+		
+		return null;
+	}
+	
+	
 }
