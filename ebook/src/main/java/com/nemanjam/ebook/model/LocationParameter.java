@@ -1,4 +1,4 @@
-package com.nemanjam.ebook.model.entity;
+package com.nemanjam.ebook.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "geoLocation")
-public class GeoLocation {
+public class LocationParameter {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,18 +21,14 @@ public class GeoLocation {
 	@Column
 	private double longitude;
 
-	public GeoLocation() {
+	public LocationParameter() {
 		super();
 	}
 
-	public GeoLocation(double latitude, double longitude) {
+	public LocationParameter(double latitude, double longitude) {
 		super();
 		this.latitude = latitude;
 		this.longitude = longitude;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 
 	public double getLatitude() {
@@ -41,10 +37,6 @@ public class GeoLocation {
 
 	public double getLongitude() {
 		return longitude;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public void setLatitude(double latitude) {

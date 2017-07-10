@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8ZhnvBEQU6dT6rbTWqO9c-p0ve_aoN98&libraries=places"></script>
-<script type="text/javascript" src="resources/static/script/maps.js"></script>
 				    
 <div class="form-boundary">
 <h2>Search Books by Location</h2>
 <hr/>
 
 	<form action="/dogeobooksearch" method="POST">
-		<div class="manage-data location-panel">			
+		<div class="manage-data location-panel">	
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8ZhnvBEQU6dT6rbTWqO9c-p0ve_aoN98&libraries=places"></script>
+			<script type="text/javascript" src="resources/static/script/maps.js"></script>		
 			
 			<div class="row-div">
 				<div class="row-content">Place Name:</div>
@@ -28,7 +28,7 @@
 			<hr/>
 			
  			<div class="row-div button-field">
-				<input type="submit" name="manage-user-info-submit" id="manage-user-info-submit" tabindex="4" class="btn btn-default" value="Search">
+				<input type="submit" name="geo-search" id="geo-search" class="btn btn-default" value="Search">
 			</div>
 		</div>
 	</form>

@@ -53,7 +53,7 @@ a:focus {
 GEO SEARCH CLASSES
 -------------------------------------------------*/
 .location-panel {
-	width: 40em !important;
+	width: 100% !important;
 	text-align: center;
 }
 
@@ -79,15 +79,36 @@ GEO SEARCH CLASSES
 	align-items:center;
 }
 
+.locatio-link a {
+	color: #28C8A0 !important; 
+}
+
+.locatio-link a:hover {
+	mouse: pointer;
+	color: #555 !important; 
+	cursor: pointer;
+}
+
+.delete-link {
+	text-align: right;
+	padding-right: 3em;
+}
+
+.add-link {
+	font-size: 1.3em;
+	text-align: center;
+	padding-top: 2em;
+}
+
 /*-------------------------------------------------
 HEADER CLASSES
 -------------------------------------------------*/
 .contentHolder {
 	width: 75em;
-	margin-left:auto;
-	margin-right:auto;
-	margin-top:0em;
-	margin-bottom:0em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0em;
+	margin-bottom: 0em;
 }
 
 .navbar-ribbon {
@@ -102,7 +123,6 @@ HEADER CLASSES
 
 .header { 
 	background: rgba(40, 200, 160, 0.45);
-	margin-top: 3.5em;
 	overflow: show; 
 	height: 15em;
 }
@@ -338,62 +358,6 @@ VIEWS
 	font-style: normal !important;
 }
 
-.tableUsers {
-	margin-top:2em;
-	text-align: left;
-	width: 45em !important;
-}
-
-.tableUsers .info {
-	width: 18em;
-	padding-top: 0em; 
-	padding-left: 0.3em;
-	margin-right: 1em;
-	font-size: 1.1em;
-}
-
-.tableUsers .add {
-	width: 12em;
-}
-
-.tableUsers .account {
-	width: 5em ;
-}
-
-.tableUsers .add button {
-	width: 6em;
-	margin-top: 0.7em; 
-	margin-right: 0.7em;
-}
-
-.tableUsers .add input[type="submit"] {
-	width: 6em;
-	margin-top: 0.7em; 
-	margin-right: 0.7em;
-}
-
-.tableCategories {
-	margin-top: 2em;
-	text-align: left;
-	width: 25em !important;
-}
-
-.tableCategories .info {
-	width: 12em;
-	padding-left: 0.3em;
-}
-
-.tableCategories .add button {
-	width: 6em;
-}
-
-.tableCategories .add form {
-	display: inline;"
-}
-
-.tableCategories .add input[type="submit"] {
-	width: 6em;
-}
 /*-------------------------------------------------
 FORMS
 -------------------------------------------------*/
@@ -417,7 +381,8 @@ FORMS
 }
 
 .manage-data th {
-	padding-left: 1em;	
+	padding-left: 0.3em;	
+	padding-right: 1em;	
 }
 
 .alert-danger {
@@ -428,8 +393,7 @@ FORMS
 .manage-data .button-field {
 	vertical-align: bottom;
 	text-align: center;
-	height: 3em;	
-	padding-right: 1em;	
+	height: 3em;		
 }
 
 .manage-data .button-field input {
@@ -446,7 +410,7 @@ FORMS
 }
 
 .table-size-big {
-	width: 39em;	
+	width: 37em;	
 }
 
 .smallInput {
@@ -462,7 +426,7 @@ FORMS
 }
 
 .veryBigInput {
-	width: 33em !important;
+	width: 29em !important;
 }
 
 .fileInput {

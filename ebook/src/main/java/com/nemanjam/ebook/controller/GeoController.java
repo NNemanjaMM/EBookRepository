@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.nemanjam.ebook.model.Marker;
 import com.nemanjam.ebook.model.entity.GeoBook;
 import com.nemanjam.ebook.model.entity.GeoLocation;
@@ -67,7 +69,7 @@ public class GeoController {
 
 	@RequestMapping(value="/dogeobookupload", method=RequestMethod.POST)
 	public String DoUploadGeoBook(@RequestParam("file") MultipartFile file, ModelMap model) {
-
+		/*
 		String savedFileName = null;
 		try {
 			savedFileName = storageService.store(file);		
@@ -82,14 +84,24 @@ public class GeoController {
 
 		GeoBook geoBook = geoBookService.getBookInfo(savedFileName);
 		model.put("book", geoBook);
+		*/
 		return "geoViewBookAdd";
 	}
 
 	@RequestMapping(value="/dogeobookadd", method=RequestMethod.POST)
-	public String DoAddGeoBook(@RequestParam("title") String title, @RequestParam("fileName") String file, 
-			@RequestParam("locations") List<GeoLocation> locations, ModelMap model) {
-
-		GeoBook book = new GeoBook(title, file, locations);		
+	public String DoAddGeoBook(@RequestParam("title") String title, @RequestParam("author") String author, 
+			@RequestParam("fileName") String file, @RequestParam("locations") String locationsJSON, 
+			ModelMap model) {
+		
+		ObjectMapper mapper = new ObjectMapper();
+		List<GeoLocation> list = new ArrayList<GeoLocation>();
+		try {
+			list = mapper.readValue(locationsJSON, TypeFactory.defaultInstance().constructCollectionType(List.class, GeoLocation.class));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		GeoBook book = new GeoBook(title, author, file, list);		
 		geoBookService.addGeoBook(book);
 		
 		addGeoBooksToModel(model);

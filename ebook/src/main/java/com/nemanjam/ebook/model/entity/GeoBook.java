@@ -22,6 +22,9 @@ public class GeoBook {
 	private String title;
 
 	@Column
+	private String author;
+
+	@Column
 	private String filename;
 
 	@OneToMany
@@ -31,24 +34,30 @@ public class GeoBook {
 		super();
 	}
 
-	public GeoBook(String title, String filename, List<GeoLocation> locations) {
+	public GeoBook(String title, String author, String filename, List<GeoLocation> locations) {
 		super();
 		this.title = title;
+		this.author = author;
 		this.filename = filename;
 		this.locations = locations;
 	}
 
-	public GeoBook(Integer id, String title, String filename,
+	public GeoBook(Integer id, String title, String author, String filename,
 			List<GeoLocation> locations) {
 		super();
 		this.id = id;
 		this.title = title;
+		this.author = author;
 		this.filename = filename;
 		this.locations = locations;
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public String getAuthor() {
+		return author;
 	}
 
 	public String getTitle() {
@@ -69,6 +78,10 @@ public class GeoBook {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public void setFilename(String filename) {
