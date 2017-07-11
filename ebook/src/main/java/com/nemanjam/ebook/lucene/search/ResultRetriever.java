@@ -18,7 +18,7 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.SimpleFSDirectory;
 import org.apache.lucene.util.Version;
 
-import com.nemanjam.ebook.lucene.UDDIndexer;
+import com.nemanjam.ebook.lucene.GeoIndexer;
 import com.nemanjam.ebook.lucene.analyze.SerbianAnalyzer;
 
 public class ResultRetriever {
@@ -48,7 +48,7 @@ public class ResultRetriever {
 		
 		try {
 			query = queryParser.parse(query.toString());
-			Directory indexDir = new SimpleFSDirectory(new File(UDDIndexer.rootLocation.toString()));
+			Directory indexDir = new SimpleFSDirectory(new File(GeoIndexer.rootLocation.toString()));
 			DirectoryReader reader = DirectoryReader.open(indexDir);
 			IndexSearcher is = new IndexSearcher(reader);
 			

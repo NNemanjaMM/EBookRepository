@@ -111,6 +111,18 @@
 		    <version>1.8.7</version>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.apache.lucene</groupId>
+		    <artifactId>lucene-spatial</artifactId>
+		    <version>4.9.0</version>
+		</dependency>		
+		
+		<dependency>
+		    <groupId>com.spatial4j</groupId>
+		    <artifactId>spatial4j</artifactId>
+		    <version>0.3</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

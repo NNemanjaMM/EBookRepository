@@ -21,7 +21,8 @@
 			
 				<tr>
 					<th class="info">
-						${book.title}
+						${book.title}, 
+						<i>${book.author}</i>
 					</th>
 					<td rowspan="2" class="add">
 						<a href="/bookdownload?bookId=${book.id}">

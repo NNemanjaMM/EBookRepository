@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.nemanjam.ebook.lucene.UDDIndexer;
+import com.nemanjam.ebook.lucene.GeoIndexer;
 
 @Service
 public class StorageService {
@@ -74,13 +74,13 @@ public class StorageService {
     
     public void deleteAll() {
         FileSystemUtils.deleteRecursively(rootLocation.toFile());
-        FileSystemUtils.deleteRecursively(UDDIndexer.rootLocation.toFile());
+        FileSystemUtils.deleteRecursively(GeoIndexer.rootLocation.toFile());
     }
  
     public void init() {
         try {
             Files.createDirectory(rootLocation);
-            Files.createDirectory(UDDIndexer.rootLocation);
+            //Files.createDirectory(GeoIndexer.rootLocation);
         } catch (IOException e) {
             throw new RuntimeException("Could not initialize storage!");
         }

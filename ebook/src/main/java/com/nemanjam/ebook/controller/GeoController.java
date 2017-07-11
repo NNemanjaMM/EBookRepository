@@ -69,7 +69,7 @@ public class GeoController {
 
 	@RequestMapping(value="/dogeobookupload", method=RequestMethod.POST)
 	public String DoUploadGeoBook(@RequestParam("file") MultipartFile file, ModelMap model) {
-		/*
+		
 		String savedFileName = null;
 		try {
 			savedFileName = storageService.store(file);		
@@ -84,7 +84,7 @@ public class GeoController {
 
 		GeoBook geoBook = geoBookService.getBookInfo(savedFileName);
 		model.put("book", geoBook);
-		*/
+		
 		return "geoViewBookAdd";
 	}
 
