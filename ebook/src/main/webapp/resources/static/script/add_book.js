@@ -5,15 +5,22 @@ $(document).ready(function() {
 	locations_count = 0;
 
 	$('#add-location').click(function() {
-		$("#add-book").prop('disabled', true);
-		$("#do-add-location-view").show();
-		$("#add-location-view").hide();
+		$("#add-book").slideUp();
+		$("#do-add-location-view").slideDown();
+		$("#add-location-view").slideUp();
 	});
 
+	$('#cancel-add-location').click(function() {
+		$("#add-book").slideDown();
+		$("#do-add-location-view").slideUp();
+		$("#add-location-view").slideDown();
+		$("#place").val("");
+	});
+	
 	$('#do-add-location').click(function() {
-		$("#add-book").prop('disabled', false);
-		$("#do-add-location-view").hide();
-		$("#add-location-view").show();
+		$("#add-book").slideDown();
+		$("#do-add-location-view").slideUp();
+		$("#add-location-view").slideDown();
 		doAddLocation();
 
 		$('.delete-location').click(function() {
@@ -58,6 +65,7 @@ function doAddLocation() {
 	locations_count++;
 
 	$("#locations-list").append(content);
+	$("#place").val("");
 }
 
 function doAddBook() {

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.nemanjam.ebook.model.Marker;
@@ -25,6 +26,7 @@ import com.nemanjam.ebook.model.entity.GeoBook;
 import com.nemanjam.ebook.model.entity.GeoLocation;
 import com.nemanjam.ebook.service.GeoBookService;
 import com.nemanjam.ebook.service.StorageService;
+import com.nemanjam.ebook.utils.MarkerColors;
 
 @Controller
 public class GeoController {
@@ -63,6 +65,7 @@ public class GeoController {
 		List<GeoBook> geoBooks = geoBookService.searchForBooks(location);
 		
 		addMarkersToModel(model, geoBooks);
+		addCenterToModel(model, location);
 		model.put("books", geoBooks);	
 		return "geoViewBooks";
 	}
@@ -104,8 +107,7 @@ public class GeoController {
 		GeoBook book = new GeoBook(title, author, file, list, places);		
 		geoBookService.addGeoBook(book);
 		
-		addGeoBooksToModel(model);
-		return "geoViewBooks";
+		return "redirect:/";
 	}
 	
 
@@ -135,7 +137,7 @@ public class GeoController {
 
 	    return ResponseEntity.ok()
 	            .contentLength(contentLength)
-	            .contentType(MediaType.parseMediaType("application/octet-stream"))
+	            .contentType(MediaType.parseMediaType("application/pdf"))
 	            .header("Content-disposition", "attachment; filename=" + downloadFileName)
 	            .body(resource);
 	}
@@ -148,16 +150,39 @@ public class GeoController {
 		model.put("books", books);	
 	}
 	
+	private void addCenterToModel(ModelMap model, GeoLocation center) {
+		ObjectMapper mapper = new ObjectMapper();
+		String centerJson = "";
+		try {
+			centerJson = mapper.writeValueAsString(center);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		model.put("center", centerJson);		
+	}
+	
 	private void addMarkersToModel(ModelMap model, List<GeoBook> books) {
 		List<Marker> markers = new ArrayList<Marker>();
+		int i = 0;
 		if (books != null) {
 			for (GeoBook geoBook : books) {
 				for (GeoLocation location : geoBook.getLocations()) {
-					markers.add(new Marker(geoBook.getTitle(), location.getLatitude(), location.getLongitude()));
+					markers.add(new Marker(geoBook.getTitle(), geoBook.getAuthor(), 
+							location.getLatitude(), location.getLongitude(), 
+							MarkerColors.colors.get(i)));
 				}
+				i++;
+				i = i%15;
 			}
 		}
-		model.put("markers", markers);	
+		ObjectMapper mapper = new ObjectMapper();
+		String markersJson = "";
+		try {
+			markersJson = mapper.writeValueAsString(markers);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		model.put("markers", markersJson);	
 	}
 
 }

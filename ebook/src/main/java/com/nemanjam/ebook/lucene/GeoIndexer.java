@@ -35,7 +35,9 @@ import com.spatial4j.core.distance.DistanceUtils;
 import com.spatial4j.core.shape.Point;
 
 public class GeoIndexer {
-
+	
+	private final int SEARCH_RADIUS = 50;
+	
 	private SpatialContext ctx = SpatialContext.GEO;
 	public static SpatialStrategy strategy = new RecursivePrefixTreeStrategy(new GeohashPrefixTree(SpatialContext.GEO, 11), "location");
 	private Directory directory;	
@@ -89,10 +91,10 @@ public class GeoIndexer {
 	    */
 	    
 		Point pt = ctx.makePoint(location.getLongitude(), location.getLatitude());
-		ValueSource valueSource = strategy.makeDistanceValueSource(pt, DistanceUtils.EARTH_MEAN_RADIUS_KM);//the distance (in km)
-		Sort distSort = new Sort(valueSource.getSortField(false)).rewrite(indexSearcher);//false=asc dist
+		ValueSource valueSource = strategy.makeDistanceValueSource(pt, DistanceUtils.EARTH_MEAN_RADIUS_KM);
+		Sort distSort = new Sort(valueSource.getSortField(false)).rewrite(indexSearcher);
 		
-	    SpatialArgs args = new SpatialArgs(SpatialOperation.Intersects, ctx.makeCircle(location.getLongitude(), location.getLatitude(), DistanceUtils.dist2Degrees(50, DistanceUtils.EARTH_MEAN_RADIUS_KM)));
+	    SpatialArgs args = new SpatialArgs(SpatialOperation.Intersects, ctx.makeCircle(location.getLongitude(), location.getLatitude(), DistanceUtils.dist2Degrees(SEARCH_RADIUS, DistanceUtils.EARTH_MEAN_RADIUS_KM)));
 	    Filter filter = strategy.makeFilter(args);
 		TopDocs docs = indexSearcher.search(new MatchAllDocsQuery(), filter, 10, distSort);
 		

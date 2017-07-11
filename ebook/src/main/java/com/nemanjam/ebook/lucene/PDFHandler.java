@@ -51,12 +51,17 @@ public class PDFHandler {
 		String title = doc.get("title");
 		String author = doc.get("author");
 		String fileName = doc.get("filename");
-		String locationString = doc.get(GeoIndexer.strategy.getFieldName());
 		String places = doc.get("places");
-		
-		GeoLocation location = new GeoLocation(locationString);
+
 		List<GeoLocation> locations = new ArrayList<GeoLocation>();
-		locations.add(location);
+		String locationString = doc.get(GeoIndexer.strategy.getFieldName());
+		do {
+			GeoLocation location = new GeoLocation(locationString);
+			locations.add(location);
+			doc.removeField(GeoIndexer.strategy.getFieldName());
+			locationString = doc.get(GeoIndexer.strategy.getFieldName());
+		} while(locationString != null);
+		
 
 		GeoBook geoBook = new GeoBook(id, title, author, fileName, locations, places);
 		

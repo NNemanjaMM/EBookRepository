@@ -76,6 +76,7 @@
 			
  			<div class="row-div button-field">
 				<input type="button" name="add-location" id="do-add-location" class="btn btn-default" value="Add Location">
+				<input type="button" name="cancel-location" id="cancel-add-location" class="btn btn-default" value="Cancel">
 			</div>
 		</div>
 		
@@ -98,9 +99,9 @@
 			
 			<tr><td><hr/></td></tr>	
 			
-			<tr>
+			<tr id="add-book" style="display:none;">
 				<td class="button-field">
-					<input type="submit" name="add-book" id="add-book" class="btn btn-default" value="Add Book" disabled="disabled">
+					<input type="submit" name="add-book" class="btn btn-default" value="Add Book">
 				</td>
 			</tr>
 		</table>

@@ -440,6 +440,11 @@ FORMS
 	outline: 0 none !important;
 }
 
+.btn-default {
+	margin-left: 1em !important;
+	margin-right: 1em !important;
+}
+
 .btn:active,
 .btn:focus {
 	outline-color: rgba(40, 200, 160, 0.8) !important;
