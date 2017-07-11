@@ -25,6 +25,13 @@ public class GeoLocation {
 		super();
 	}
 
+	public GeoLocation(String location) {
+		super();
+		String params[] = location.split(" ");
+		this.longitude = Double.parseDouble(params[0]);
+		this.latitude = Double.parseDouble(params[1]);
+	}
+
 	public GeoLocation(double latitude, double longitude) {
 		super();
 		this.latitude = latitude;

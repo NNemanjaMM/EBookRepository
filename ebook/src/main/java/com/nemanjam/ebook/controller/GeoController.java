@@ -91,7 +91,7 @@ public class GeoController {
 	@RequestMapping(value="/dogeobookadd", method=RequestMethod.POST)
 	public String DoAddGeoBook(@RequestParam("title") String title, @RequestParam("author") String author, 
 			@RequestParam("fileName") String file, @RequestParam("locations") String locationsJSON, 
-			ModelMap model) {
+			@RequestParam("places") String places, ModelMap model) {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		List<GeoLocation> list = new ArrayList<GeoLocation>();
@@ -101,7 +101,7 @@ public class GeoController {
 			e.printStackTrace();
 		}
 		
-		GeoBook book = new GeoBook(title, author, file, list);		
+		GeoBook book = new GeoBook(title, author, file, list, places);		
 		geoBookService.addGeoBook(book);
 		
 		addGeoBooksToModel(model);

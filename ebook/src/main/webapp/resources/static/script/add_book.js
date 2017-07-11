@@ -40,7 +40,7 @@ function doAddLocation() {
 
 	var content = '<tr class="location' + locations_count + ' location-name">'
 					+ '<td colspan="1">Location:</td>'
-					+ '<td colspan="3"><label class="place-name' + locations_count + '">' + locationName + '</label></td>'
+					+ '<td colspan="3"><label class="place-name place-name' + locations_count + '">' + locationName + '</label></td>'
 					+ '<td colspan="1" class="locatio-link delete-link"><a class="delete-location" tag="' + locations_count + '">Delete</a></td>'
 				+ '</tr>'
 				+ '<tr class="location' + locations_count + ' location-value">'
@@ -65,6 +65,7 @@ function doAddBook() {
 	var titleValue = $("#title").val();
 	var authorValue = $("#author").val();
 	var fileNameValue = $("#filename").val();
+	var placesValue = "";
 	var locationsValue = '[';
 
 	$('.location-value').each(
@@ -76,6 +77,14 @@ function doAddBook() {
 			});
 	locationsValue = locationsValue.slice(0, -1);
 	locationsValue += ']';
+
+	$('.location-name').each(
+			function(i, obj) {
+				var place = $(obj).find('.place-name').text();
+				placesValue += place + ';<br/>';
+			});
+	placesValue = placesValue.slice(0, -6);
+	
 
 	var form = document.createElement("form");
 	form.setAttribute("method", "POST");
@@ -104,6 +113,12 @@ function doAddBook() {
 	locationsField.setAttribute("name", "locations");
 	locationsField.setAttribute("value", locationsValue);
 	form.appendChild(locationsField);
+
+	var placesField = document.createElement("input");
+	placesField.setAttribute("type", "hidden");
+	placesField.setAttribute("name", "places");
+	placesField.setAttribute("value", placesValue);
+	form.appendChild(placesField);
 
 	document.body.appendChild(form);
 	form.submit();

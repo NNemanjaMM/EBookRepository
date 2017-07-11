@@ -32,6 +32,7 @@ public class PDFHandler {
 		doc.add(new TextField("title", book.getTitle().trim(), Store.YES));
 		doc.add(new TextField("author", book.getAuthor(), Store.YES));
 		doc.add(new TextField("filename", book.getFilename().trim(), Store.YES));
+		doc.add(new TextField("places", book.getPlaces().trim(), Store.YES));
 		
 		for (GeoLocation location : book.getLocations()) {
 			Point point = ctx.makePoint(location.getLongitude(), location.getLatitude());
@@ -50,10 +51,14 @@ public class PDFHandler {
 		String title = doc.get("title");
 		String author = doc.get("author");
 		String fileName = doc.get("filename");
-		String Locations = doc.get(GeoIndexer.strategy.getFieldName());
+		String locationString = doc.get(GeoIndexer.strategy.getFieldName());
+		String places = doc.get("places");
+		
+		GeoLocation location = new GeoLocation(locationString);
 		List<GeoLocation> locations = new ArrayList<GeoLocation>();
+		locations.add(location);
 
-		GeoBook geoBook = new GeoBook(id, title, author, fileName, locations);
+		GeoBook geoBook = new GeoBook(id, title, author, fileName, locations, places);
 		
 		return geoBook;
 	}

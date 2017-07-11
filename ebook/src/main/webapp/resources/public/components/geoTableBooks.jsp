@@ -32,9 +32,9 @@
 				</tr>
 				<tr>
 					<td>
-						<i>Book locations: 
-							<c:forEach items="${book.locations}" var="loc">
-								(${loc.latitude}, ${loc.longitude}) 
+						<i> 
+							<c:forEach items="${book.places}" var="place">
+								${place} 
 							</c:forEach>
 						</i>
 					</td>
