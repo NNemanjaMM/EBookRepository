@@ -60,6 +60,7 @@ GEO SEARCH CLASSES
 #map {
 	height: 30em;
 	width: 100%;
+    box-shadow: 0px 0px 10px 0px #AAA !important;
 }
 
 .row-div {

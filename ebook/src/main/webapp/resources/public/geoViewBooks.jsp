@@ -16,8 +16,6 @@
 		
 			<div class="content">
     			<div class="center-content">
-					
-					<h2>Books to display</h2>
 						
 					<jsp:include page="components/geoTableBooks.jsp" />
 					

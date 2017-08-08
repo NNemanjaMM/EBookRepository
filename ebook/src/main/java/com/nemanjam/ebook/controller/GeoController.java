@@ -41,6 +41,7 @@ public class GeoController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String OpenAllGeoBook(ModelMap model) {
 		addGeoBooksToModel(model);
+		model.put("viewTitle", "All Books");
 		return "geoViewBooks";
 	}
 	
@@ -67,6 +68,7 @@ public class GeoController {
 		addMarkersToModel(model, geoBooks);
 		addCenterToModel(model, location);
 		model.put("books", geoBooks);	
+		model.put("viewTitle", "Search Results");	
 		return "geoViewBooks";
 	}
 

@@ -4,6 +4,10 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC8ZhnvBEQU6dT6rbTWqO9c-p0ve_aoN98&libraries=places"></script>
 <script type="text/javascript" src="resources/static/script/set_markers.js"></script>
 	
+					
+<h2>${viewTitle}</h2>
+					
+					
 <c:if test="${download_error != null}">
 	<tr>
 		<td colspan="2" class="error-field" role="alert">
