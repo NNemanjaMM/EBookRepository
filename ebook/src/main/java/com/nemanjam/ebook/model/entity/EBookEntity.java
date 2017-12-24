@@ -18,7 +18,7 @@ public class EBookEntity {
 	private Integer id;
 
 	@Column(nullable = false)
-	@Size(max = 80, min = 1, message = "Book's title must contain between 1 and 80 characters!")
+	@Size(max = 800, min = 1, message = "Book's title must contain between 1 and 80 characters!")
 	private String title;
 
 	@Column(nullable = true)
